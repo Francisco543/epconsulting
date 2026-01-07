@@ -314,7 +314,7 @@ export default function PracticeAreaPage({
                 <div
                   className={`inline-flex p-6 rounded-2xl bg-gradient-to-br ${area.gradient} text-white shadow-2xl mb-8`}
                 >
-                  {area.icon}
+                  {area.icon as React.ReactNode}
                 </div>
 
                 {/* Badge */}
