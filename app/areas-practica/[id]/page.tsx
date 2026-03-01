@@ -1,6 +1,6 @@
 "use client";
 
-import { use, useState, useEffect, useRef } from "react";
+import { use, useState, useEffect, useRef, type ReactNode } from "react";
 import Link from "next/link";
 import PageNav from "@/app/components/PageNav";
 import FooterHero from "@/app/components/FooterHero";
@@ -16,7 +16,7 @@ const practiceAreasData: Record<
     description: string;
     fullDescription: string;
     number: string;
-    icon: React.ReactNode;
+    icon: ReactNode;
     services: string[];
     benefits: string[];
   }
@@ -266,7 +266,10 @@ export default function PracticeAreaPage({
   const area = practiceAreasData[id];
   const currentIndex = AREA_IDS.indexOf(id);
   const prevId = currentIndex > 0 ? AREA_IDS[currentIndex - 1] : null;
-  const nextId = currentIndex >= 0 && currentIndex < AREA_IDS.length - 1 ? AREA_IDS[currentIndex + 1] : null;
+  const nextId =
+    currentIndex >= 0 && currentIndex < AREA_IDS.length - 1
+      ? AREA_IDS[currentIndex + 1]
+      : null;
   const prevArea = prevId ? practiceAreasData[prevId] : null;
   const nextArea = nextId ? practiceAreasData[nextId] : null;
 
@@ -277,18 +280,21 @@ export default function PracticeAreaPage({
   const benefitsRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    setHeroVisible(true);
+    const t = requestAnimationFrame(() => setHeroVisible(true));
+    return () => cancelAnimationFrame(t);
   }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.target === servicesRef.current) setServicesVisible(entry.isIntersecting);
-          if (entry.target === benefitsRef.current) setBenefitsVisible(entry.isIntersecting);
+          if (entry.target === servicesRef.current)
+            setServicesVisible(entry.isIntersecting);
+          if (entry.target === benefitsRef.current)
+            setBenefitsVisible(entry.isIntersecting);
         });
       },
-      { threshold: 0.12, rootMargin: "0px 0px -60px 0px" }
+      { threshold: 0.12, rootMargin: "0px 0px -60px 0px" },
     );
     if (servicesRef.current) observer.observe(servicesRef.current);
     if (benefitsRef.current) observer.observe(benefitsRef.current);
@@ -357,7 +363,9 @@ export default function PracticeAreaPage({
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-end">
             <div
               className={`lg:col-span-5 transition-all duration-1000 ease-out ${
-                heroVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                heroVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
               }`}
             >
               <p
@@ -380,12 +388,14 @@ export default function PracticeAreaPage({
                 {area.number}
               </div>
               <div className="inline-flex p-5 rounded-2xl bg-[#D4AF37]/10 border border-[#D4AF37]/25 text-[#D4AF37]">
-                {area.icon as React.ReactNode}
+                {area.icon}
               </div>
             </div>
             <div
               className={`lg:col-span-7 lg:pl-8 transition-all duration-1000 ease-out delay-150 ${
-                heroVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                heroVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
               }`}
             >
               <h1
@@ -435,7 +445,8 @@ export default function PracticeAreaPage({
           <div
             className="w-px h-12 rounded-full"
             style={{
-              background: "linear-gradient(to bottom, rgba(212, 175, 55, 0.6), transparent)",
+              background:
+                "linear-gradient(to bottom, rgba(212, 175, 55, 0.6), transparent)",
             }}
           />
         </div>
@@ -453,7 +464,9 @@ export default function PracticeAreaPage({
         <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
           <div
             className={`flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-16 lg:mb-20 transition-all duration-700 ease-out ${
-              servicesVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+              servicesVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-10"
             }`}
           >
             <div className="flex items-baseline gap-6">
@@ -496,7 +509,9 @@ export default function PracticeAreaPage({
               <li
                 key={index}
                 className={`group border-b border-neutral-200/80 transition-all duration-500 ease-out ${
-                  servicesVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+                  servicesVisible
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-6"
                 }`}
                 style={{
                   transitionDelay: `${index * 60}ms`,
@@ -537,7 +552,9 @@ export default function PracticeAreaPage({
         <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
           <div
             className={`flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-16 lg:mb-20 transition-all duration-700 ease-out ${
-              benefitsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+              benefitsVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-10"
             }`}
           >
             <div className="flex items-baseline gap-6">
@@ -580,7 +597,9 @@ export default function PracticeAreaPage({
               <div
                 key={index}
                 className={`group flex items-start gap-6 p-8 lg:p-10 rounded-2xl border border-[#2a3d32] bg-[#1e3329]/40 hover:bg-[#1e3329] hover:border-[#D4AF37]/50 transition-all duration-500 ease-out hover:-translate-y-1 ${
-                  benefitsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+                  benefitsVisible
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-6"
                 }`}
                 style={{
                   transitionDelay: `${index * 80}ms`,
