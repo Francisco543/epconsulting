@@ -69,7 +69,7 @@ export default function Navbar() {
                       className="text-sm lg:text-base font-semibold text-neutral-900 leading-tight tracking-tight"
                       style={{ fontFamily: "var(--font-space-grotesk)" }}
                     >
-                      EP Consulting
+                      MEP Consulting
                     </span>
                   </div>
                 </div>

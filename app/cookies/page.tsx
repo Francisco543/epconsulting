@@ -1,9 +1,16 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import type { Metadata } from "next";
 
-export const metadata = {
-  title: "Política de Cookies | Estudio Jurídico Palomeque & Asociados",
-  description: "Política de cookies del Estudio Jurídico Palomeque & Asociados",
+export const metadata: Metadata = {
+  title: "Política de Cookies",
+  description:
+    "Política de cookies del sitio web de MEP Consulting. Uso de cookies, tipos y gestión de preferencias.",
+  openGraph: {
+    title: "Política de Cookies | MEP Consulting",
+    description: "Información sobre el uso de cookies en nuestro sitio.",
+  },
+  robots: { index: true, follow: true },
 };
 
 export default function CookiesPage() {

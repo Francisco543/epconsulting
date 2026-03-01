@@ -1,9 +1,16 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import type { Metadata } from "next";
 
-export const metadata = {
-  title: "Términos y Condiciones | Estudio Jurídico Palomeque & Asociados",
-  description: "Términos y condiciones de uso del Estudio Jurídico Palomeque & Asociados",
+export const metadata: Metadata = {
+  title: "Términos y Condiciones",
+  description:
+    "Términos y condiciones de uso del sitio web de MEP Consulting. Uso del sitio, propiedad intelectual y legislación aplicable.",
+  openGraph: {
+    title: "Términos y Condiciones | MEP Consulting",
+    description: "Condiciones de uso del sitio web.",
+  },
+  robots: { index: true, follow: true },
 };
 
 export default function TerminosPage() {

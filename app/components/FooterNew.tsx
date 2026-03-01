@@ -57,9 +57,9 @@ export default function FooterNew() {
                 fontWeight: 400,
               }}
             >
-              Estudio Jurídico especializado en Prevención del Lavado de
-              Activos y la Financiación del Terrorismo. Revisor Externo
-              Independiente acreditado ante la UIF.
+              Estudio Jurídico especializado en Prevención del Lavado de Activos
+              y la Financiación del Terrorismo. Revisor Externo Independiente
+              acreditado ante la UIF.
             </p>
           </div>
 
@@ -89,9 +89,7 @@ export default function FooterNew() {
                         fontWeight: 400,
                       }}
                     >
-                      <span
-                        className="w-1 h-1 rounded-full bg-[#D4AF37] opacity-0 group-hover:opacity-100 transition-opacity"
-                      />
+                      <span className="w-1 h-1 rounded-full bg-[#D4AF37] opacity-0 group-hover:opacity-100 transition-opacity" />
                       <span className="group-hover:text-white transition-colors">
                         {link.label}
                       </span>
@@ -124,9 +122,7 @@ export default function FooterNew() {
                       fontWeight: 400,
                     }}
                   >
-                    <span
-                      className="w-1 h-1 rounded-full bg-[#D4AF37] opacity-0 group-hover:opacity-100 transition-opacity"
-                    />
+                    <span className="w-1 h-1 rounded-full bg-[#D4AF37] opacity-0 group-hover:opacity-100 transition-opacity" />
                     <span className="group-hover:text-white transition-colors">
                       info@estudiopalomeque.com
                     </span>
@@ -142,9 +138,7 @@ export default function FooterNew() {
                       fontWeight: 400,
                     }}
                   >
-                    <span
-                      className="w-1 h-1 rounded-full bg-[#D4AF37] opacity-0 group-hover:opacity-100 transition-opacity"
-                    />
+                    <span className="w-1 h-1 rounded-full bg-[#D4AF37] opacity-0 group-hover:opacity-100 transition-opacity" />
                     <span className="group-hover:text-white transition-colors">
                       +54 11 1234-5678
                     </span>
@@ -231,5 +225,3 @@ export default function FooterNew() {
     </footer>
   );
 }
-
-

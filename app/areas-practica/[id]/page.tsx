@@ -1,9 +1,11 @@
 "use client";
 
-import { use } from "react";
+import { use, useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import Navbar from "@/app/components/Navbar";
-import Footer from "@/app/components/Footer";
+import PageNav from "@/app/components/PageNav";
+import FooterHero from "@/app/components/FooterHero";
+
+const AREA_IDS = ["1", "2", "3", "4", "5", "6"];
 
 const practiceAreasData: Record<
   string,
@@ -15,7 +17,6 @@ const practiceAreasData: Record<
     fullDescription: string;
     number: string;
     icon: JSX.Element;
-    gradient: string;
     services: string[];
     benefits: string[];
   }
@@ -44,7 +45,6 @@ const practiceAreasData: Record<
         />
       </svg>
     ),
-    gradient: "from-orange-500 via-orange-400 to-amber-500",
     services: [
       "Elaboración de Políticas y Procedimientos",
       "Adecuación de Manuales de Compliance",
@@ -84,7 +84,6 @@ const practiceAreasData: Record<
         />
       </svg>
     ),
-    gradient: "from-amber-500 via-orange-500 to-orange-600",
     services: [
       "Revisión Externa Independiente",
       "Emisión de Informes REI ante UIF",
@@ -124,7 +123,6 @@ const practiceAreasData: Record<
         />
       </svg>
     ),
-    gradient: "from-orange-600 via-orange-500 to-amber-600",
     services: [
       "Programas de Capacitación Personalizados",
       "Capacitación para Ejecutivos",
@@ -164,7 +162,6 @@ const practiceAreasData: Record<
         />
       </svg>
     ),
-    gradient: "from-amber-600 via-orange-600 to-orange-700",
     services: [
       "Auditorías de Cumplimiento Normativo",
       "Evaluación de Riesgos LA/FT",
@@ -204,7 +201,6 @@ const practiceAreasData: Record<
         />
       </svg>
     ),
-    gradient: "from-orange-500 via-amber-500 to-orange-600",
     services: [
       "Participación en Comités de Compliance",
       "Asesoramiento Estratégico",
@@ -244,7 +240,6 @@ const practiceAreasData: Record<
         />
       </svg>
     ),
-    gradient: "from-orange-600 via-orange-700 to-amber-700",
     services: [
       "Asistencia en Requerimientos Regulatorios",
       "Preparación de Respuestas",
@@ -269,160 +264,349 @@ export default function PracticeAreaPage({
 }) {
   const { id } = use(params);
   const area = practiceAreasData[id];
+  const currentIndex = AREA_IDS.indexOf(id);
+  const prevId = currentIndex > 0 ? AREA_IDS[currentIndex - 1] : null;
+  const nextId = currentIndex >= 0 && currentIndex < AREA_IDS.length - 1 ? AREA_IDS[currentIndex + 1] : null;
+  const prevArea = prevId ? practiceAreasData[prevId] : null;
+  const nextArea = nextId ? practiceAreasData[nextId] : null;
+
+  const [heroVisible, setHeroVisible] = useState(false);
+  const [servicesVisible, setServicesVisible] = useState(false);
+  const [benefitsVisible, setBenefitsVisible] = useState(false);
+  const servicesRef = useRef<HTMLElement>(null);
+  const benefitsRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    setHeroVisible(true);
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.target === servicesRef.current) setServicesVisible(entry.isIntersecting);
+          if (entry.target === benefitsRef.current) setBenefitsVisible(entry.isIntersecting);
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -60px 0px" }
+    );
+    if (servicesRef.current) observer.observe(servicesRef.current);
+    if (benefitsRef.current) observer.observe(benefitsRef.current);
+    return () => observer.disconnect();
+  }, [id]);
 
   if (!area) {
     return (
-      <div className="min-h-screen">
-        <Navbar />
-        <div className="flex items-center justify-center min-h-screen">
+      <div className="min-h-screen" style={{ backgroundColor: "#1a2e24" }}>
+        <PageNav />
+        <div className="flex items-center justify-center min-h-[60vh] px-6">
           <div className="text-center">
-            <h1 className="text-4xl font-bold mb-4">Área no encontrada</h1>
-            <Link href="/" className="text-orange-600 hover:underline">
-              Volver al inicio
+            <h1
+              className="text-3xl sm:text-4xl font-bold mb-6"
+              style={{
+                fontFamily: "var(--font-rhymes)",
+                color: "#F5E6C8",
+              }}
+            >
+              Área no encontrada
+            </h1>
+            <Link
+              href="/areas-practica"
+              className="inline-flex items-center gap-2 text-sm uppercase tracking-[0.2em] transition-all duration-300 hover:opacity-90"
+              style={{
+                fontFamily: "var(--font-monument)",
+                color: "#D4AF37",
+              }}
+            >
+              ← Volver a áreas de práctica
             </Link>
           </div>
         </div>
+        <FooterHero />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-white">
-      <Navbar />
+    <div className="min-h-screen" style={{ backgroundColor: "#1a2e24" }}>
+      <PageNav />
 
-      {/* Hero Section */}
-      <section className="relative pt-32 pb-20 overflow-hidden">
-        {/* Background gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-orange-50 via-white to-amber-50"></div>
-        <div className="absolute top-0 right-0 w-96 h-96 bg-orange-100 rounded-full blur-3xl opacity-30"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-amber-100 rounded-full blur-3xl opacity-20"></div>
+      {/* Hero — full viewport, número gigante, scroll cue */}
+      <section
+        className="relative min-h-screen flex flex-col justify-between overflow-hidden border-b border-[#2a3d32]"
+        style={{ backgroundColor: "#1a2e24" }}
+      >
+        {/* Número gigante de fondo */}
+        <div
+          className="absolute inset-0 flex items-center justify-end pr-0 lg:pr-[10%] pointer-events-none select-none"
+          aria-hidden
+        >
+          <span
+            className="text-[28vw] lg:text-[22rem] font-light leading-[0.85] tabular-nums transition-all duration-1000 ease-out"
+            style={{
+              fontFamily: "var(--font-rhymes)",
+              color: "#D4AF37",
+              opacity: heroVisible ? 0.07 : 0,
+            }}
+          >
+            {area.number}
+          </span>
+        </div>
 
-        <div className="relative mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Left Column - Number and Icon */}
-            <div className="lg:col-span-4">
-              <div className="flex flex-col items-center lg:items-start">
-                {/* Large Number */}
-                <div
-                  className={`text-9xl font-bold bg-gradient-to-br ${area.gradient} bg-clip-text text-transparent mb-8`}
-                  style={{ fontFamily: "var(--font-playfair)" }}
-                >
-                  {area.number}
-                </div>
-
-                {/* Icon */}
-                <div
-                  className={`inline-flex p-6 rounded-2xl bg-gradient-to-br ${area.gradient} text-white shadow-2xl mb-8`}
-                >
-                  {area.icon as React.ReactNode}
-                </div>
-
-                {/* Badge */}
-                <div className="px-4 py-2 bg-orange-100 rounded-full border border-orange-200">
-                  <span
-                    className="text-sm font-semibold text-orange-700 uppercase tracking-wider"
-                    style={{ fontFamily: "var(--font-inter)" }}
-                  >
-                    Área de Práctica
-                  </span>
-                </div>
+        <div className="relative z-10 mx-auto w-full max-w-7xl px-6 sm:px-8 lg:px-12 pt-8 lg:pt-12 pb-6">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-end">
+            <div
+              className={`lg:col-span-5 transition-all duration-1000 ease-out ${
+                heroVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
+            >
+              <p
+                className="text-[11px] uppercase tracking-[0.38em] mb-6"
+                style={{
+                  fontFamily: "var(--font-monument)",
+                  color: "rgba(245, 230, 200, 0.45)",
+                }}
+              >
+                Área de práctica
+              </p>
+              <div
+                className="text-[4rem] sm:text-[5rem] lg:text-[6.5rem] font-light tabular-nums mb-8"
+                style={{
+                  fontFamily: "var(--font-rhymes)",
+                  color: "#D4AF37",
+                  lineHeight: 0.9,
+                }}
+              >
+                {area.number}
+              </div>
+              <div className="inline-flex p-5 rounded-2xl bg-[#D4AF37]/10 border border-[#D4AF37]/25 text-[#D4AF37]">
+                {area.icon as React.ReactNode}
               </div>
             </div>
-
-            {/* Right Column - Content */}
-            <div className="lg:col-span-8">
+            <div
+              className={`lg:col-span-7 lg:pl-8 transition-all duration-1000 ease-out delay-150 ${
+                heroVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
+            >
               <h1
-                className="text-5xl md:text-6xl lg:text-7xl font-bold text-zinc-900 mb-6 leading-tight"
-                style={{ fontFamily: "var(--font-playfair)" }}
+                className="text-4xl sm:text-5xl lg:text-6xl xl:text-[4rem] 2xl:text-[4.5rem] leading-[0.92] mb-8"
+                style={{
+                  fontFamily: "var(--font-rhymes)",
+                  fontWeight: 600,
+                  color: "#F5E6C8",
+                  letterSpacing: "-0.02em",
+                }}
               >
                 {area.title}
               </h1>
+              <div
+                className="w-16 h-0.5 mb-8"
+                style={{ backgroundColor: "#D4AF37" }}
+              />
               <p
-                className="text-xl md:text-2xl text-zinc-600 leading-relaxed mb-8 max-w-3xl"
-                style={{ fontFamily: "var(--font-inter)" }}
+                className="text-lg sm:text-xl lg:text-2xl max-w-2xl leading-relaxed"
+                style={{
+                  fontFamily: "var(--font-monument)",
+                  color: "rgba(245, 230, 200, 0.88)",
+                  lineHeight: 1.65,
+                }}
               >
                 {area.fullDescription}
               </p>
             </div>
           </div>
         </div>
+
+        {/* Scroll cue */}
+        <div
+          className={`relative z-10 flex flex-col items-center pb-10 transition-all duration-700 delay-700 ${
+            heroVisible ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          <span
+            className="text-[10px] uppercase tracking-[0.3em] mb-3"
+            style={{
+              fontFamily: "var(--font-monument)",
+              color: "rgba(245, 230, 200, 0.4)",
+            }}
+          >
+            Scroll
+          </span>
+          <div
+            className="w-px h-12 rounded-full"
+            style={{
+              background: "linear-gradient(to bottom, rgba(212, 175, 55, 0.6), transparent)",
+            }}
+          />
+        </div>
       </section>
 
-      {/* Services Section */}
-      <section className="py-24 bg-white">
+      {/* Servicios — editorial, numerado, scroll reveal */}
+      <section
+        ref={servicesRef}
+        className="py-24 lg:py-36"
+        style={{
+          backgroundColor: "#f8f8f6",
+          borderBottom: "1px solid rgba(26, 26, 26, 0.06)",
+        }}
+      >
         <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
-          <div className="mb-16">
-            <h2
-              className="text-4xl md:text-5xl font-bold text-zinc-900 mb-4"
-              style={{ fontFamily: "var(--font-playfair)" }}
+          <div
+            className={`flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-16 lg:mb-20 transition-all duration-700 ease-out ${
+              servicesVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+            }`}
+          >
+            <div className="flex items-baseline gap-6">
+              <span
+                className="text-6xl lg:text-7xl font-light tabular-nums"
+                style={{
+                  fontFamily: "var(--font-rhymes)",
+                  color: "#D4AF37",
+                  lineHeight: 1,
+                }}
+              >
+                01
+              </span>
+              <h2
+                className="text-3xl sm:text-4xl lg:text-5xl"
+                style={{
+                  fontFamily: "var(--font-rhymes)",
+                  fontWeight: 600,
+                  color: "#1a1a1a",
+                  letterSpacing: "-0.02em",
+                }}
+              >
+                Nuestros servicios
+              </h2>
+            </div>
+            <p
+              className="text-base sm:text-lg max-w-md"
+              style={{
+                fontFamily: "var(--font-monument)",
+                color: "rgba(26, 26, 26, 0.65)",
+                lineHeight: 1.6,
+              }}
             >
-              Nuestros Servicios
-            </h2>
-            <div className="h-1 w-24 bg-gradient-to-r from-orange-500 to-amber-500 rounded-full"></div>
+              Alcance concreto de esta área de práctica.
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <ul className="space-y-0">
             {area.services.map((service, index) => (
-              <div
+              <li
                 key={index}
-                className="group p-6 bg-gradient-to-br from-zinc-50 to-white rounded-xl border border-zinc-100 hover:border-orange-200 hover:shadow-lg transition-all duration-300"
+                className={`group border-b border-neutral-200/80 transition-all duration-500 ease-out ${
+                  servicesVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+                }`}
+                style={{
+                  transitionDelay: `${index * 60}ms`,
+                }}
               >
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 mt-1">
-                    <div className="w-2 h-2 rounded-full bg-gradient-to-br from-orange-500 to-amber-500"></div>
-                  </div>
+                <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8 py-6 sm:py-8 hover:bg-white/60 transition-colors duration-300">
+                  <span
+                    className="shrink-0 text-2xl sm:text-3xl font-light tabular-nums w-12"
+                    style={{
+                      fontFamily: "var(--font-rhymes)",
+                      color: "rgba(26, 26, 26, 0.35)",
+                    }}
+                  >
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
                   <p
-                    className="text-zinc-700 font-medium leading-relaxed group-hover:text-zinc-900 transition-colors"
-                    style={{ fontFamily: "var(--font-inter)" }}
+                    className="text-lg sm:text-xl lg:text-2xl font-medium leading-snug group-hover:text-[#1a2e24] transition-colors duration-300"
+                    style={{
+                      fontFamily: "var(--font-monument)",
+                      color: "rgba(26, 26, 26, 0.88)",
+                    }}
                   >
                     {service}
                   </p>
                 </div>
-              </div>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 
-      {/* Benefits Section */}
-      <section className="py-24 bg-gradient-to-br from-orange-50 to-amber-50">
+      {/* Beneficios — impacto, scroll reveal */}
+      <section
+        ref={benefitsRef}
+        className="py-24 lg:py-36 border-t border-[#2a3d32]"
+        style={{ backgroundColor: "#1a2e24" }}
+      >
         <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
-          <div className="mb-16">
-            <h2
-              className="text-4xl md:text-5xl font-bold text-zinc-900 mb-4"
-              style={{ fontFamily: "var(--font-playfair)" }}
+          <div
+            className={`flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-16 lg:mb-20 transition-all duration-700 ease-out ${
+              benefitsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+            }`}
+          >
+            <div className="flex items-baseline gap-6">
+              <span
+                className="text-6xl lg:text-7xl font-light tabular-nums"
+                style={{
+                  fontFamily: "var(--font-rhymes)",
+                  color: "#D4AF37",
+                  lineHeight: 1,
+                }}
+              >
+                02
+              </span>
+              <h2
+                className="text-3xl sm:text-4xl lg:text-5xl"
+                style={{
+                  fontFamily: "var(--font-rhymes)",
+                  fontWeight: 600,
+                  color: "#F5E6C8",
+                  letterSpacing: "-0.02em",
+                }}
+              >
+                Beneficios clave
+              </h2>
+            </div>
+            <p
+              className="text-base sm:text-lg max-w-md"
+              style={{
+                fontFamily: "var(--font-monument)",
+                color: "rgba(245, 230, 200, 0.6)",
+                lineHeight: 1.6,
+              }}
             >
-              Beneficios Clave
-            </h2>
-            <div className="h-1 w-24 bg-gradient-to-r from-orange-500 to-amber-500 rounded-full"></div>
+              Lo que su organización obtiene con nuestro acompañamiento.
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
             {area.benefits.map((benefit, index) => (
               <div
                 key={index}
-                className="flex items-start gap-4 p-6 bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300"
+                className={`group flex items-start gap-6 p-8 lg:p-10 rounded-2xl border border-[#2a3d32] bg-[#1e3329]/40 hover:bg-[#1e3329] hover:border-[#D4AF37]/50 transition-all duration-500 ease-out hover:-translate-y-1 ${
+                  benefitsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+                }`}
+                style={{
+                  transitionDelay: `${index * 80}ms`,
+                }}
               >
-                <div className="flex-shrink-0">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center">
-                    <svg
-                      className="w-6 h-6 text-white"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2.5}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                  </div>
+                <div className="shrink-0 w-14 h-14 rounded-2xl bg-[#D4AF37]/15 flex items-center justify-center text-[#D4AF37] group-hover:bg-[#D4AF37] group-hover:text-[#1a2e24] transition-all duration-300">
+                  <svg
+                    className="w-7 h-7"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={2.5}
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
                 </div>
                 <p
-                  className="text-lg text-zinc-700 font-medium pt-2"
-                  style={{ fontFamily: "var(--font-inter)" }}
+                  className="text-lg sm:text-xl font-medium leading-snug pt-1"
+                  style={{
+                    fontFamily: "var(--font-monument)",
+                    color: "rgba(245, 230, 200, 0.95)",
+                  }}
                 >
                   {benefit}
                 </p>
@@ -432,43 +616,174 @@ export default function PracticeAreaPage({
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-24 bg-white">
-        <div className="mx-auto max-w-4xl px-6 sm:px-8 lg:px-12">
-          <div className="text-center p-12 bg-gradient-to-br from-orange-500 to-amber-500 rounded-3xl shadow-2xl">
+      {/* Navegación prev/next área */}
+      <section
+        className="py-12 lg:py-16 border-t border-[#2a3d32]"
+        style={{ backgroundColor: "#1a2e24" }}
+      >
+        <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
+          <div className="relative flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-6">
+            {prevArea ? (
+              <Link
+                href={`/areas-practica/${prevId}`}
+                className="group flex items-center gap-4 py-4 sm:py-0 text-left transition-opacity hover:opacity-90"
+              >
+                <span
+                  className="text-[#D4AF37] transition-transform duration-300 group-hover:-translate-x-1"
+                  style={{ fontFamily: "var(--font-monument)" }}
+                >
+                  ←
+                </span>
+                <div>
+                  <span
+                    className="block text-[10px] uppercase tracking-[0.25em] mb-1"
+                    style={{
+                      fontFamily: "var(--font-monument)",
+                      color: "rgba(245, 230, 200, 0.45)",
+                    }}
+                  >
+                    Área anterior
+                  </span>
+                  <span
+                    className="text-lg font-medium"
+                    style={{
+                      fontFamily: "var(--font-rhymes)",
+                      color: "#F5E6C8",
+                    }}
+                  >
+                    {prevArea.title}
+                  </span>
+                </div>
+              </Link>
+            ) : (
+              <div />
+            )}
+            <Link
+              href="/areas-practica"
+              className="text-center sm:absolute left-1/2 sm:-translate-x-1/2 text-[11px] uppercase tracking-[0.2em] transition-colors hover:text-[#D4AF37]"
+              style={{
+                fontFamily: "var(--font-monument)",
+                color: "rgba(245, 230, 200, 0.5)",
+              }}
+            >
+              Todas las áreas
+            </Link>
+            {nextArea ? (
+              <Link
+                href={`/areas-practica/${nextId}`}
+                className="group flex items-center gap-4 py-4 sm:py-0 justify-end sm:justify-start sm:flex-row-reverse text-right sm:text-left transition-opacity hover:opacity-90"
+              >
+                <span
+                  className="text-[#D4AF37] transition-transform duration-300 group-hover:translate-x-1"
+                  style={{ fontFamily: "var(--font-monument)" }}
+                >
+                  →
+                </span>
+                <div>
+                  <span
+                    className="block text-[10px] uppercase tracking-[0.25em] mb-1"
+                    style={{
+                      fontFamily: "var(--font-monument)",
+                      color: "rgba(245, 230, 200, 0.45)",
+                    }}
+                  >
+                    Siguiente área
+                  </span>
+                  <span
+                    className="text-lg font-medium"
+                    style={{
+                      fontFamily: "var(--font-rhymes)",
+                      color: "#F5E6C8",
+                    }}
+                  >
+                    {nextArea.title}
+                  </span>
+                </div>
+              </Link>
+            ) : (
+              <div />
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA — blob premium */}
+      <section
+        className="py-20 lg:py-28"
+        style={{ backgroundColor: "transparent" }}
+      >
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex justify-center">
+          <div
+            className="w-full max-w-2xl mx-auto py-20 lg:py-24 px-8 sm:px-14 text-center"
+            style={{
+              backgroundColor: "#1e3329",
+              border: "1px solid #2a3d32",
+              boxShadow: "0 30px 70px -24px rgba(26, 46, 36, 0.4)",
+              borderRadius: "42% 58% 55% 45% / 52% 38% 62% 48%",
+            }}
+          >
+            <p
+              className="text-[11px] uppercase tracking-[0.3em] mb-4"
+              style={{
+                fontFamily: "var(--font-monument)",
+                color: "rgba(245, 230, 200, 0.5)",
+              }}
+            >
+              Siguiente paso
+            </p>
             <h2
-              className="text-4xl md:text-5xl font-bold text-white mb-6"
-              style={{ fontFamily: "var(--font-playfair)" }}
+              className="text-3xl sm:text-4xl lg:text-[2.75rem] mb-4 leading-tight"
+              style={{
+                fontFamily: "var(--font-rhymes)",
+                fontWeight: 600,
+                color: "#F5E6C8",
+                letterSpacing: "-0.02em",
+              }}
             >
               ¿Listo para comenzar?
             </h2>
             <p
-              className="text-xl text-white/90 mb-8 max-w-2xl mx-auto"
-              style={{ fontFamily: "var(--font-inter)" }}
+              className="text-base sm:text-lg mb-10 max-w-md mx-auto"
+              style={{
+                fontFamily: "var(--font-monument)",
+                color: "rgba(245, 230, 200, 0.78)",
+                lineHeight: 1.6,
+              }}
             >
-              Contáctenos para conocer cómo podemos ayudarle con {area.title}
+              Contáctenos para conocer cómo podemos ayudarle con {area.title}.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/contacto"
-                className="px-8 py-4 bg-white text-orange-600 font-semibold rounded-lg hover:bg-zinc-50 transition-all duration-300 hover:scale-105 shadow-lg"
-                style={{ fontFamily: "var(--font-inter)" }}
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-[#D4AF37] rounded-sm transition-all duration-300 hover:bg-[#D4AF37] hover:text-[#1a2e24] font-medium"
+                style={{
+                  fontFamily: "var(--font-monument)",
+                  color: "#D4AF37",
+                  fontSize: "13px",
+                  letterSpacing: "0.1em",
+                }}
               >
-                Solicitar Consulta
+                Solicitar consulta
+                <span>→</span>
               </Link>
               <Link
                 href="/areas-practica"
-                className="px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-lg border-2 border-white/30 hover:bg-white/20 transition-all duration-300"
-                style={{ fontFamily: "var(--font-inter)" }}
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-[#2a3d32] rounded-sm transition-all duration-300 hover:border-[#D4AF37]/60 hover:bg-[#1a2e24]"
+                style={{
+                  fontFamily: "var(--font-monument)",
+                  color: "rgba(245, 230, 200, 0.9)",
+                  fontSize: "13px",
+                  letterSpacing: "0.08em",
+                }}
               >
-                Ver Otras Áreas
+                ← Ver otras áreas
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      <Footer />
+      <FooterHero />
     </div>
   );
 }
