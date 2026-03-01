@@ -16,7 +16,7 @@ const practiceAreasData: Record<
     description: string;
     fullDescription: string;
     number: string;
-    icon: JSX.Element;
+    icon: React.ReactNode;
     services: string[];
     benefits: string[];
   }
