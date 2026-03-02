@@ -1,8 +1,5 @@
 import { NextResponse } from "next/server";
-import {
-  createContactMessage,
-  listContactMessages,
-} from "@/app/services/contactService";
+import { supabaseServer } from "@/app/lib/supabaseServer";
 
 export async function POST(request: Request) {
   try {
@@ -24,14 +21,22 @@ export async function POST(request: Request) {
       );
     }
 
-    await createContactMessage({
+    const { error } = await supabaseServer.from("contact_messages").insert({
       name: name.trim(),
       email: email.trim(),
-      phone: phone ? String(phone).trim() : undefined,
-      company: company ? String(company).trim() : undefined,
-      subject: subject ? String(subject).trim() : undefined,
+      phone: phone ? String(phone).trim() : null,
+      company: company ? String(company).trim() : null,
+      subject: subject ? String(subject).trim() : null,
       message: message.trim(),
     });
+
+    if (error) {
+      console.error("Supabase error inserting contact message:", error);
+      return NextResponse.json(
+        { error: "Error al guardar el mensaje" },
+        { status: 500 },
+      );
+    }
 
     return NextResponse.json({ ok: true }, { status: 201 });
   } catch (error) {
@@ -45,8 +50,20 @@ export async function POST(request: Request) {
 
 export async function GET() {
   try {
-    const messages = await listContactMessages();
-    return NextResponse.json(messages);
+    const { data, error } = await supabaseServer
+      .from("contact_messages")
+      .select("*")
+      .order("created_at", { ascending: false });
+
+    if (error) {
+      console.error("Supabase error fetching contact messages:", error);
+      return NextResponse.json(
+        { error: "Error al obtener los mensajes" },
+        { status: 500 },
+      );
+    }
+
+    return NextResponse.json(data ?? []);
   } catch (error) {
     console.error("Error in GET /api/contact:", error);
     return NextResponse.json(

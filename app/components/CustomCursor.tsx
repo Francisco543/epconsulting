@@ -1,8 +1,15 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 
 export default function CustomCursor() {
+  const pathname = usePathname();
+
+  // No usar cursor personalizado en el panel de admin
+  if (pathname?.startsWith("/admin")) {
+    return null;
+  }
   const [pos, setPos] = useState({ x: -100, y: -100 });
   const [hover, setHover] = useState(false);
   const [visible, setVisible] = useState(false);
