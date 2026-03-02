@@ -13,11 +13,42 @@ export default function ContactSection() {
   });
 
   const [focusedField, setFocusedField] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">(
+    "idle",
+  );
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Aquí iría la lógica de envío del formulario
-    console.log("Form submitted:", formData);
+    setSubmitStatus("idle");
+    setIsSubmitting(true);
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        console.error("Error sending contact message", await response.text());
+        setSubmitStatus("error");
+        return;
+      }
+
+      setSubmitStatus("success");
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        company: "",
+        message: "",
+      });
+    } catch (err) {
+      console.error("Unexpected error inserting contact message:", err);
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (
@@ -369,41 +400,65 @@ export default function ContactSection() {
                   {/* Submit Button */}
                   <button
                     type="submit"
-                    className="w-full px-8 py-4 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-semibold text-lg rounded-lg hover:from-orange-600 hover:to-amber-600 transition-all duration-300 hover:shadow-xl hover:shadow-orange-500/30 hover:scale-[1.02] active:scale-100 flex items-center justify-center gap-2"
+                    disabled={isSubmitting}
+                    className="w-full px-8 py-4 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-semibold text-lg rounded-lg hover:from-orange-600 hover:to-amber-600 transition-all duration-300 hover:shadow-xl hover:shadow-orange-500/30 hover:scale-[1.02] active:scale-100 flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
                     style={{ fontFamily: "var(--font-inter)" }}
                   >
-                    <span>Enviar Consulta</span>
-                    <svg
-                      className="w-5 h-5"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2.5}
-                        d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
-                      />
-                    </svg>
+                    <span>
+                      {isSubmitting ? "Enviando..." : "Enviar Consulta"}
+                    </span>
+                    {!isSubmitting && (
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2.5}
+                          d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
+                        />
+                      </svg>
+                    )}
                   </button>
                 </div>
               </div>
 
               {/* Privacy Note */}
-              <p
-                className="text-sm text-zinc-500 text-center leading-relaxed"
-                style={{ fontFamily: "var(--font-inter)" }}
-              >
-                Al enviar este formulario, acepta nuestra{" "}
-                <Link
-                  href="/privacidad"
-                  className="text-orange-600 hover:text-orange-700 underline font-medium"
+              <div className="space-y-2">
+                {submitStatus === "success" && (
+                  <p
+                    className="text-sm text-green-600 text-center leading-relaxed"
+                    style={{ fontFamily: "var(--font-inter)" }}
+                  >
+                    Gracias por su mensaje. Nos contactaremos a la brevedad.
+                  </p>
+                )}
+                {submitStatus === "error" && (
+                  <p
+                    className="text-sm text-red-600 text-center leading-relaxed"
+                    style={{ fontFamily: "var(--font-inter)" }}
+                  >
+                    Ocurrió un error al enviar el mensaje. Intente nuevamente en
+                    unos minutos.
+                  </p>
+                )}
+                <p
+                  className="text-sm text-zinc-500 text-center leading-relaxed"
+                  style={{ fontFamily: "var(--font-inter)" }}
                 >
-                  Política de Privacidad
-                </Link>
-                . Sus datos serán tratados con la máxima confidencialidad.
-              </p>
+                  Al enviar este formulario, acepta nuestra{" "}
+                  <Link
+                    href="/privacidad"
+                    className="text-orange-600 hover:text-orange-700 underline font-medium"
+                  >
+                    Política de Privacidad
+                  </Link>
+                  . Sus datos serán tratados con la máxima confidencialidad.
+                </p>
+              </div>
             </form>
           </div>
         </div>
