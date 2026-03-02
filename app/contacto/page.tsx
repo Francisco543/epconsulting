@@ -34,17 +34,55 @@ const contactItems = [
 ];
 
 export default function ContactoPage() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    company: "",
+    message: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">(
+    "idle",
+  );
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent("Consulta desde MEP Compliance");
-    const body = encodeURIComponent(
-      `Nombre: ${name}\nEmail: ${email}\n\nMensaje:\n${message}`,
-    );
-    window.location.href = `mailto:info@mepcompliance.com?subject=${subject}&body=${body}`;
+    setSubmitStatus("idle");
+    setIsSubmitting(true);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      if (!res.ok) {
+        setSubmitStatus("error");
+        return;
+      }
+      setSubmitStatus("success");
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        company: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error("Error sending contact form", error);
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -167,7 +205,7 @@ export default function ContactoPage() {
             {/* Columna derecha: formulario */}
             <div className="lg:col-span-7">
               <h2
-                className="text-xl sm:text-2xl mb-6"
+                className="text-xl sm:text-2xl mb-2"
                 style={{
                   fontFamily: "var(--font-rhymes)",
                   fontWeight: 600,
@@ -177,14 +215,16 @@ export default function ContactoPage() {
                 Enviar mensaje
               </h2>
               <p
-                className="text-sm mb-8"
+                className="text-sm mb-10"
                 style={{
                   fontFamily: "var(--font-monument)",
                   color: "rgba(26, 26, 26, 0.7)",
                   lineHeight: 1.65,
                 }}
               >
-                Completá el formulario y te contestamos por email.
+                Completá el formulario y te contestamos por email. Los datos se
+                almacenan de forma segura y sólo se utilizan para responder tu
+                consulta.
               </p>
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
@@ -196,13 +236,14 @@ export default function ContactoPage() {
                       color: "rgba(26, 26, 26, 0.6)",
                     }}
                   >
-                    Nombre
+                    Nombre completo
                   </label>
                   <input
                     id="name"
                     type="text"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
                     required
                     className="w-full px-4 py-3 rounded-lg border border-neutral-200 bg-white focus:border-[#D4AF37] focus:outline-none focus:ring-1 focus:ring-[#D4AF37]/30 transition-all duration-200 placeholder:text-neutral-400"
                     style={{
@@ -227,8 +268,9 @@ export default function ContactoPage() {
                   <input
                     id="email"
                     type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
                     required
                     className="w-full px-4 py-3 rounded-lg border border-neutral-200 bg-white focus:border-[#D4AF37] focus:outline-none focus:ring-1 focus:ring-[#D4AF37]/30 transition-all duration-200 placeholder:text-neutral-400"
                     style={{
@@ -238,6 +280,60 @@ export default function ContactoPage() {
                     }}
                     placeholder="su@email.com"
                   />
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label
+                      htmlFor="phone"
+                      className="block text-[10px] uppercase tracking-[0.2em] mb-2"
+                      style={{
+                        fontFamily: "var(--font-monument)",
+                        color: "rgba(26, 26, 26, 0.6)",
+                      }}
+                    >
+                      Teléfono (opcional)
+                    </label>
+                    <input
+                      id="phone"
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 rounded-lg border border-neutral-200 bg-white focus:border-[#D4AF37] focus:outline-none focus:ring-1 focus:ring-[#D4AF37]/30 transition-all duration-200 placeholder:text-neutral-400"
+                      style={{
+                        fontFamily: "var(--font-monument)",
+                        color: "#1a1a1a",
+                        fontSize: "15px",
+                      }}
+                      placeholder="+54 11 1234-5678"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="company"
+                      className="block text-[10px] uppercase tracking-[0.2em] mb-2"
+                      style={{
+                        fontFamily: "var(--font-monument)",
+                        color: "rgba(26, 26, 26, 0.6)",
+                      }}
+                    >
+                      Empresa / Organización (opcional)
+                    </label>
+                    <input
+                      id="company"
+                      type="text"
+                      name="company"
+                      value={formData.company}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 rounded-lg border border-neutral-200 bg-white focus:border-[#D4AF37] focus:outline-none focus:ring-1 focus:ring-[#D4AF37]/30 transition-all duration-200 placeholder:text-neutral-400"
+                      style={{
+                        fontFamily: "var(--font-monument)",
+                        color: "#1a1a1a",
+                        fontSize: "15px",
+                      }}
+                      placeholder="Nombre de la empresa"
+                    />
+                  </div>
                 </div>
                 <div>
                   <label
@@ -252,8 +348,9 @@ export default function ContactoPage() {
                   </label>
                   <textarea
                     id="message"
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
                     required
                     rows={5}
                     className="w-full px-4 py-3 rounded-lg border border-neutral-200 bg-white focus:border-[#D4AF37] focus:outline-none focus:ring-1 focus:ring-[#D4AF37]/30 transition-all duration-200 resize-y min-h-[120px] placeholder:text-neutral-400"
@@ -265,10 +362,11 @@ export default function ContactoPage() {
                     placeholder="Cuéntanos en qué podemos ayudarte..."
                   />
                 </div>
-                <div className="pt-2">
+                <div className="pt-2 space-y-3">
                   <button
                     type="submit"
-                    className="inline-flex items-center gap-2 px-6 py-3 border-2 border-[#D4AF37] rounded-sm transition-all duration-300 hover:opacity-90"
+                    disabled={isSubmitting}
+                    className="inline-flex items-center gap-2 px-6 py-3 border-2 border-[#D4AF37] rounded-sm transition-all duration-300 hover:opacity-90 disabled:opacity-60 disabled:cursor-not-allowed"
                     style={{
                       fontFamily: "var(--font-monument)",
                       color: "#1a2e24",
@@ -277,9 +375,28 @@ export default function ContactoPage() {
                       letterSpacing: "0.08em",
                     }}
                   >
-                    Enviar mensaje
-                    <span>→</span>
+                    {isSubmitting ? "Enviando..." : "Enviar mensaje"}
+                    {!isSubmitting && <span>→</span>}
                   </button>
+                  <div className="min-h-[20px]">
+                    {submitStatus === "success" && (
+                      <p
+                        className="text-xs text-emerald-700"
+                        style={{ fontFamily: "var(--font-monument)" }}
+                      >
+                        Gracias por tu mensaje. Te responderemos a la brevedad.
+                      </p>
+                    )}
+                    {submitStatus === "error" && (
+                      <p
+                        className="text-xs text-red-600"
+                        style={{ fontFamily: "var(--font-monument)" }}
+                      >
+                        Hubo un error al enviar el mensaje. Intentalo de nuevo en
+                        unos minutos.
+                      </p>
+                    )}
+                  </div>
                 </div>
               </form>
             </div>
