@@ -3,6 +3,7 @@ import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 import CustomCursor from "./components/CustomCursor";
 import { JsonLd } from "./components/JsonLd";
+import { Analytics } from "@vercel/analytics/next";
 import {
   SITE_URL,
   SITE_NAME,
@@ -86,6 +87,7 @@ export default function RootLayout({
     <html lang="es">
       <body className={`${playfair.variable} ${inter.variable} antialiased`}>
         <JsonLd />
+        <Analytics />
         <CustomCursor />
         {children}
       </body>
