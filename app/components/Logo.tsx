@@ -10,7 +10,7 @@ export function LogoIcon() {
   return (
     <span className="inline-flex items-center">
       <Image
-        src="/logo2.png"
+        src="/logo3.png"
         alt="MEP Compliance"
         width={170}
         height={52}

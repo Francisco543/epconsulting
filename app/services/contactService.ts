@@ -1,4 +1,4 @@
-import { supabase } from "@/app/lib/supabaseClient";
+export type ContactMessageStatus = "nuevo" | "leido" | "archivado";
 
 export type ContactMessage = {
   id: string;
@@ -10,6 +10,7 @@ export type ContactMessage = {
   message: string;
   created_at: string;
   read_at: string | null;
+  status: ContactMessageStatus;
 };
 
 type CreateContactInput = {
@@ -22,30 +23,43 @@ type CreateContactInput = {
 };
 
 export async function createContactMessage(input: CreateContactInput) {
-  const { error } = await supabase.from("contact_messages").insert({
-    name: input.name,
-    email: input.email,
-    phone: input.phone || null,
-    company: input.company || null,
-    subject: input.subject || null,
-    message: input.message,
+  const response = await fetch("/api/contact", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(input),
   });
 
-  if (error) {
-    throw new Error(error.message);
+  if (!response.ok) {
+    const text = await response.text();
+    throw new Error(text || "Error al enviar el mensaje de contacto");
   }
 }
 
 export async function listContactMessages(): Promise<ContactMessage[]> {
-  const { data, error } = await supabase
-    .from("contact_messages")
-    .select("*")
-    .order("created_at", { ascending: false });
+  const response = await fetch("/api/contact", { method: "GET" });
 
-  if (error) {
-    throw new Error(error.message);
+  if (!response.ok) {
+    const text = await response.text();
+    throw new Error(text || "Error al obtener los mensajes de contacto");
   }
 
-  return (data ?? []) as ContactMessage[];
+  const data = (await response.json()) as ContactMessage[];
+  return data;
+}
+
+export async function updateContactMessageStatus(
+  id: string,
+  status: ContactMessageStatus,
+) {
+  const response = await fetch(`/api/contact/${id}/status`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ status }),
+  });
+
+  if (!response.ok) {
+    const text = await response.text();
+    throw new Error(text || "Error al actualizar el estado del mensaje");
+  }
 }
 
