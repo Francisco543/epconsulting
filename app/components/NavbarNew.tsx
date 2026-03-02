@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function NavbarNew() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -37,9 +38,9 @@ export default function NavbarNew() {
 
   return (
     <>
-      {/* Navbar Flotante - Fijo arriba */}
+      {/* Navbar flotante más compacto */}
       <nav
-        className="fixed top-0 left-0 right-0 w-full p-3 sm:p-4 lg:p-5"
+        className="fixed top-0 left-0 right-0 w-full"
         style={{
           position: "fixed",
           top: "0",
@@ -48,10 +49,14 @@ export default function NavbarNew() {
           zIndex: 9999,
           width: "100%",
           margin: 0,
-          padding: "12px 16px",
+          padding: "4px 12px",
         }}
       >
-        <div style={{ padding: "16px 24px" }}>
+        <div
+          style={{
+            padding: "4px 12px",
+          }}
+        >
           <div
             style={{
               display: "flex",
@@ -71,38 +76,19 @@ export default function NavbarNew() {
               onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
               onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
             >
-              <svg
-                width="130"
-                height="40"
-                viewBox="0 0 168 52"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
+              <Image
+                src="/logo.png"
+                alt="MEP Compliance"
+                width={120}
+                height={32}
+                priority
                 style={{
-                  width: "130px",
-                  height: "40px",
-                  transition: "all 0.4s ease-out",
+                  width: "auto",
+                  height: "32px",
+                  objectFit: "contain",
+                  transition: "all 0.2s ease-out",
                 }}
-              >
-                <path
-                  d="M0 52L16 2L32 52H23L16 28L9 52H0Z"
-                  fill={isScrolled ? "#1a1a1a" : "#FFFFFF"}
-                  style={{ transition: "fill 0.4s ease-out" }}
-                />
-                <path d="M26 52L42 2L58 52H49L42 28L35 52H26Z" fill="#D4AF37" />
-                <path
-                  d="M68 2H102V12H80V22H99V32H80V42H102V52H68V2Z"
-                  fill={isScrolled ? "#1a1a1a" : "#FFFFFF"}
-                  style={{ transition: "fill 0.4s ease-out" }}
-                />
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M112 2H138C147.941 2 156 10.059 156 20C156 29.941 147.941 38 138 38H124V52H112V2ZM124 12V28H136C140.418 28 144 24.418 144 20C144 15.582 140.418 12 136 12H124Z"
-                  fill={isScrolled ? "#1a1a1a" : "#FFFFFF"}
-                  style={{ transition: "fill 0.4s ease-out" }}
-                />
-                <circle cx="164" cy="6" r="4" fill="#D4AF37" />
-              </svg>
+              />
             </Link>
 
             {/* Navbar derecha */}

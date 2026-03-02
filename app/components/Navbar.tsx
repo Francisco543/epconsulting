@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Logo from "./Logo";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -37,8 +38,8 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Container principal con padding */}
-      <div className="fixed top-0 left-0 right-0 z-50 px-6 sm:px-8 lg:px-12 xl:px-16 pt-6">
+      {/* Container principal más compacto */}
+      <div className="fixed top-0 left-0 right-0 z-50 px-3 sm:px-5 lg:px-8 xl:px-12 pt-2 pb-2">
         <nav
           className={`transition-all duration-500 ease-out ${
             isScrolled
@@ -46,34 +47,10 @@ export default function Navbar() {
               : "bg-white/90 backdrop-blur-md"
           } rounded-full`}
         >
-          <div className="mx-auto max-w-[1600px] px-8 lg:px-12">
-            <div className="flex h-20 lg:h-24 items-center justify-between">
-              {/* Logo - Minimalista */}
-              <Link
-                href="/"
-                className="flex items-center transition-opacity duration-300 hover:opacity-70"
-              >
-                <div className="flex items-center gap-3">
-                  {/* Logo badge */}
-                  <div className="w-10 h-10 lg:w-12 lg:h-12 bg-neutral-900 rounded-full flex items-center justify-center">
-                    <span
-                      className="text-white text-lg lg:text-xl font-bold"
-                      style={{ fontFamily: "var(--font-space-grotesk)" }}
-                    >
-                      EP
-                    </span>
-                  </div>
-                  {/* Nombre */}
-                  <div className="hidden sm:flex flex-col">
-                    <span
-                      className="text-sm lg:text-base font-semibold text-neutral-900 leading-tight tracking-tight"
-                      style={{ fontFamily: "var(--font-space-grotesk)" }}
-                    >
-                      MEP Consulting
-                    </span>
-                  </div>
-                </div>
-              </Link>
+          <div className="mx-auto max-w-[1600px] px-3 lg:px-6">
+            <div className="flex h-12 lg:h-14 items-center justify-between">
+              {/* Logo unificado */}
+              <Logo href="/" />
 
               {/* Desktop Navigation - Centrado */}
               <div className="hidden lg:flex lg:items-center lg:space-x-10 xl:space-x-12">

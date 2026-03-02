@@ -114,7 +114,7 @@ export default function FooterNew() {
               <ul className="space-y-4">
                 <li>
                   <a
-                    href="mailto:info@estudiopalomeque.com"
+                    href="mailto:info@mepcompliance.com"
                     className="group inline-flex items-center gap-3 text-sm transition-all duration-300"
                     style={{
                       fontFamily: "var(--font-monument)",
@@ -124,7 +124,7 @@ export default function FooterNew() {
                   >
                     <span className="w-1 h-1 rounded-full bg-[#D4AF37] opacity-0 group-hover:opacity-100 transition-opacity" />
                     <span className="group-hover:text-white transition-colors">
-                      info@estudiopalomeque.com
+                      info@mepcompliance.com
                     </span>
                   </a>
                 </li>

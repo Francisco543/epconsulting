@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       canonical: `${SITE_URL}/areas-practica/${id}`,
     },
     openGraph: {
-      title: `${area.title} | MEP Consulting`,
+      title: `${area.title} | MEP Compliance`,
       description: area.description,
       url: `${SITE_URL}/areas-practica/${id}`,
     },

@@ -6,9 +6,9 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Aviso Legal",
   description:
-    "Aviso legal y condiciones de uso del sitio web de MEP Consulting. Datos identificativos, propiedad intelectual y legislación aplicable.",
+    "Aviso legal y condiciones de uso del sitio web de MEP Compliance. Datos identificativos, propiedad intelectual y legislación aplicable.",
   openGraph: {
-    title: "Aviso Legal | MEP Consulting",
+    title: "Aviso Legal | MEP Compliance",
     description: "Condiciones de uso y datos identificativos del sitio.",
   },
   robots: { index: true, follow: true },
@@ -76,13 +76,22 @@ export default function AvisoLegalPage() {
                   lineHeight: 1.75,
                 }}
               >
-                En cumplimiento con el deber de información recogido en artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y del Comercio Electrónico, a continuación se reflejan los siguientes datos:
+                En cumplimiento con el deber de información recogido en artículo
+                10 de la Ley 34/2002, de 11 de julio, de Servicios de la
+                Sociedad de la Información y del Comercio Electrónico, a
+                continuación se reflejan los siguientes datos:
               </p>
-              <ul className="list-disc pl-6 space-y-2" style={{ fontFamily: "var(--font-monument)", color: "rgba(26, 26, 26, 0.8)" }}>
-                <li>Denominación social: MEP Consulting</li>
+              <ul
+                className="list-disc pl-6 space-y-2"
+                style={{
+                  fontFamily: "var(--font-monument)",
+                  color: "rgba(26, 26, 26, 0.8)",
+                }}
+              >
+                <li>Denominación social: MEP Compliance</li>
                 <li>Dirección: Buenos Aires, Argentina</li>
-                <li>Email: info@estudiopalomeque.com</li>
-                <li>Teléfono: +54 11 1234-5678</li>
+                <li>Email: info@mepcompliance.com</li>
+                <li>Teléfono: +54 11 4916-9760</li>
               </ul>
             </section>
 
@@ -99,15 +108,27 @@ export default function AvisoLegalPage() {
               </h2>
               <p
                 className="text-base leading-relaxed mb-4"
-                style={{ fontFamily: "var(--font-monument)", color: "rgba(26, 26, 26, 0.8)", lineHeight: 1.75 }}
+                style={{
+                  fontFamily: "var(--font-monument)",
+                  color: "rgba(26, 26, 26, 0.8)",
+                  lineHeight: 1.75,
+                }}
               >
-                El presente aviso legal regula el uso del sitio web (en adelante, el sitio web), del cual es titular MEP Consulting.
+                El presente aviso legal regula el uso del sitio web (en
+                adelante, el sitio web), del cual es titular MEP Compliance.
               </p>
               <p
                 className="text-base leading-relaxed"
-                style={{ fontFamily: "var(--font-monument)", color: "rgba(26, 26, 26, 0.8)", lineHeight: 1.75 }}
+                style={{
+                  fontFamily: "var(--font-monument)",
+                  color: "rgba(26, 26, 26, 0.8)",
+                  lineHeight: 1.75,
+                }}
               >
-                La navegación por el sitio web de MEP Consulting implica la aceptación de todas las disposiciones incluidas en este aviso legal, así como de la política de privacidad y política de cookies.
+                La navegación por el sitio web de MEP Compliance implica la
+                aceptación de todas las disposiciones incluidas en este aviso
+                legal, así como de la política de privacidad y política de
+                cookies.
               </p>
             </section>
 
@@ -124,9 +145,21 @@ export default function AvisoLegalPage() {
               </h2>
               <p
                 className="text-base leading-relaxed"
-                style={{ fontFamily: "var(--font-monument)", color: "rgba(26, 26, 26, 0.8)", lineHeight: 1.75 }}
+                style={{
+                  fontFamily: "var(--font-monument)",
+                  color: "rgba(26, 26, 26, 0.8)",
+                  lineHeight: 1.75,
+                }}
               >
-                El acceso y uso del sitio web se rige por la legalidad vigente y por el principio de buena fe, comprometiéndose el usuario a realizar un buen uso de la web. No se permite el uso del sitio web con fines o efectos ilícitos, prohibidos en este aviso legal, lesivos de los derechos e intereses de terceros, o que de cualquier forma puedan dañar, inutilizar, sobrecargar, deteriorar o impedir la normal utilización de los servicios o documentos, archivos y toda clase de contenidos almacenados en cualquier equipo informático.
+                El acceso y uso del sitio web se rige por la legalidad vigente y
+                por el principio de buena fe, comprometiéndose el usuario a
+                realizar un buen uso de la web. No se permite el uso del sitio
+                web con fines o efectos ilícitos, prohibidos en este aviso
+                legal, lesivos de los derechos e intereses de terceros, o que de
+                cualquier forma puedan dañar, inutilizar, sobrecargar,
+                deteriorar o impedir la normal utilización de los servicios o
+                documentos, archivos y toda clase de contenidos almacenados en
+                cualquier equipo informático.
               </p>
             </section>
 
@@ -143,15 +176,31 @@ export default function AvisoLegalPage() {
               </h2>
               <p
                 className="text-base leading-relaxed mb-4"
-                style={{ fontFamily: "var(--font-monument)", color: "rgba(26, 26, 26, 0.8)", lineHeight: 1.75 }}
+                style={{
+                  fontFamily: "var(--font-monument)",
+                  color: "rgba(26, 26, 26, 0.8)",
+                  lineHeight: 1.75,
+                }}
               >
-                MEP Consulting es titular de todos los derechos sobre el software del sitio web así como de los derechos de propiedad industrial e intelectual referidos a los contenidos que se incluyan, a excepción de los derechos sobre productos y servicios de carácter público que no son propiedad de esta empresa.
+                MEP Compliance es titular de todos los derechos sobre el
+                software del sitio web así como de los derechos de propiedad
+                industrial e intelectual referidos a los contenidos que se
+                incluyan, a excepción de los derechos sobre productos y
+                servicios de carácter público que no son propiedad de esta
+                empresa.
               </p>
               <p
                 className="text-base leading-relaxed"
-                style={{ fontFamily: "var(--font-monument)", color: "rgba(26, 26, 26, 0.8)", lineHeight: 1.75 }}
+                style={{
+                  fontFamily: "var(--font-monument)",
+                  color: "rgba(26, 26, 26, 0.8)",
+                  lineHeight: 1.75,
+                }}
               >
-                Queda prohibida la reproducción, publicación y/o uso no estrictamente privado de los contenidos, totales o parciales, del sitio web sin el consentimiento previo y por escrito de MEP Consulting.
+                Queda prohibida la reproducción, publicación y/o uso no
+                estrictamente privado de los contenidos, totales o parciales,
+                del sitio web sin el consentimiento previo y por escrito de MEP
+                Compliance.
               </p>
             </section>
 
@@ -168,15 +217,31 @@ export default function AvisoLegalPage() {
               </h2>
               <p
                 className="text-base leading-relaxed mb-4"
-                style={{ fontFamily: "var(--font-monument)", color: "rgba(26, 26, 26, 0.8)", lineHeight: 1.75 }}
+                style={{
+                  fontFamily: "var(--font-monument)",
+                  color: "rgba(26, 26, 26, 0.8)",
+                  lineHeight: 1.75,
+                }}
               >
-                MEP Consulting no se hace responsable de la información y contenidos almacenados en foros, chats, generadores de blogs, comentarios, redes sociales o cualquier otro medio que permita a terceros publicar contenidos de forma independiente en la página web.
+                MEP Compliance no se hace responsable de la información y
+                contenidos almacenados en foros, chats, generadores de blogs,
+                comentarios, redes sociales o cualquier otro medio que permita a
+                terceros publicar contenidos de forma independiente en la página
+                web.
               </p>
               <p
                 className="text-base leading-relaxed"
-                style={{ fontFamily: "var(--font-monument)", color: "rgba(26, 26, 26, 0.8)", lineHeight: 1.75 }}
+                style={{
+                  fontFamily: "var(--font-monument)",
+                  color: "rgba(26, 26, 26, 0.8)",
+                  lineHeight: 1.75,
+                }}
               >
-                Sin embargo, y en cumplimiento de lo dispuesto en los artículos 11 y 16 de la LSSI-CE, MEP Consulting se compromete a retirar o en su caso bloquear aquellos contenidos que puedan afectar o contravenir la legislación nacional o internacional, derechos de terceros o la moral y el orden público.
+                Sin embargo, y en cumplimiento de lo dispuesto en los artículos
+                11 y 16 de la LSSI-CE, MEP Compliance se compromete a retirar o
+                en su caso bloquear aquellos contenidos que puedan afectar o
+                contravenir la legislación nacional o internacional, derechos de
+                terceros o la moral y el orden público.
               </p>
             </section>
 
@@ -193,9 +258,17 @@ export default function AvisoLegalPage() {
               </h2>
               <p
                 className="text-base leading-relaxed"
-                style={{ fontFamily: "var(--font-monument)", color: "rgba(26, 26, 26, 0.8)", lineHeight: 1.75 }}
+                style={{
+                  fontFamily: "var(--font-monument)",
+                  color: "rgba(26, 26, 26, 0.8)",
+                  lineHeight: 1.75,
+                }}
               >
-                MEP Consulting se reserva el derecho de realizar sin previo aviso las modificaciones que considere oportunas en su portal, pudiendo cambiar, suprimir o añadir tanto los contenidos y servicios que se presten a través de la misma como la forma en la que éstos aparezcan presentados o localizados en su portal.
+                MEP Compliance se reserva el derecho de realizar sin previo
+                aviso las modificaciones que considere oportunas en su portal,
+                pudiendo cambiar, suprimir o añadir tanto los contenidos y
+                servicios que se presten a través de la misma como la forma en
+                la que éstos aparezcan presentados o localizados en su portal.
               </p>
             </section>
 
@@ -212,9 +285,17 @@ export default function AvisoLegalPage() {
               </h2>
               <p
                 className="text-base leading-relaxed"
-                style={{ fontFamily: "var(--font-monument)", color: "rgba(26, 26, 26, 0.8)", lineHeight: 1.75 }}
+                style={{
+                  fontFamily: "var(--font-monument)",
+                  color: "rgba(26, 26, 26, 0.8)",
+                  lineHeight: 1.75,
+                }}
               >
-                El presente aviso legal se rige por la legislación argentina. Para cualquier controversia que pudiera derivarse del acceso o uso del presente sitio web, MEP Consulting y el usuario se someten a los juzgados y tribunales de Buenos Aires, renunciando expresamente a cualquier otro fuero que pudiera corresponderles.
+                El presente aviso legal se rige por la legislación argentina.
+                Para cualquier controversia que pudiera derivarse del acceso o
+                uso del presente sitio web, MEP Compliance y el usuario se
+                someten a los juzgados y tribunales de Buenos Aires, renunciando
+                expresamente a cualquier otro fuero que pudiera corresponderles.
               </p>
             </section>
 
@@ -231,13 +312,24 @@ export default function AvisoLegalPage() {
               </h2>
               <p
                 className="text-base leading-relaxed mb-4"
-                style={{ fontFamily: "var(--font-monument)", color: "rgba(26, 26, 26, 0.8)", lineHeight: 1.75 }}
+                style={{
+                  fontFamily: "var(--font-monument)",
+                  color: "rgba(26, 26, 26, 0.8)",
+                  lineHeight: 1.75,
+                }}
               >
-                Para cualquier consulta o aclaración sobre el presente aviso legal, puede contactarnos a través de:
+                Para cualquier consulta o aclaración sobre el presente aviso
+                legal, puede contactarnos a través de:
               </p>
-              <ul className="list-disc pl-6 space-y-2" style={{ fontFamily: "var(--font-monument)", color: "rgba(26, 26, 26, 0.8)" }}>
-                <li>Email: info@estudiopalomeque.com</li>
-                <li>Teléfono: +54 11 1234-5678</li>
+              <ul
+                className="list-disc pl-6 space-y-2"
+                style={{
+                  fontFamily: "var(--font-monument)",
+                  color: "rgba(26, 26, 26, 0.8)",
+                }}
+              >
+                <li>Email: info@mepcompliance.com</li>
+                <li>Teléfono: +54 11 4916-9760</li>
               </ul>
             </section>
           </div>
@@ -245,9 +337,17 @@ export default function AvisoLegalPage() {
           <div className="mt-14 pt-8 border-t border-[#2a3d32]/20">
             <p
               className="text-sm"
-              style={{ fontFamily: "var(--font-monument)", color: "rgba(26, 26, 26, 0.5)" }}
+              style={{
+                fontFamily: "var(--font-monument)",
+                color: "rgba(26, 26, 26, 0.5)",
+              }}
             >
-              Última actualización: {new Date().toLocaleDateString("es-AR", { year: "numeric", month: "long", day: "numeric" })}
+              Última actualización:{" "}
+              {new Date().toLocaleDateString("es-AR", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
             </p>
           </div>
 
@@ -261,7 +361,9 @@ export default function AvisoLegalPage() {
                 Volver al inicio
                 <span className="absolute bottom-0 left-0 w-0 h-px bg-[#D4AF37] transition-all duration-300 group-hover:w-full" />
               </span>
-              <span className="transition-transform duration-300 group-hover:translate-x-0.5">←</span>
+              <span className="transition-transform duration-300 group-hover:translate-x-0.5">
+                ←
+              </span>
             </Link>
           </div>
         </div>

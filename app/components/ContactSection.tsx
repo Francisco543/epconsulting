@@ -91,11 +91,11 @@ export default function ContactSection() {
                     Email
                   </h3>
                   <a
-                    href="mailto:info@estudiopalomeque.com"
+                    href="mailto:info@mepcompliance.com"
                     className="text-lg text-zinc-900 hover:text-orange-600 transition-colors font-medium"
                     style={{ fontFamily: "var(--font-inter)" }}
                   >
-                    info@estudiopalomeque.com
+                    info@mepcompliance.com
                   </a>
                 </div>
               </div>

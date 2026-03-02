@@ -8,10 +8,10 @@ import { SITE_URL } from "@/app/lib/site";
 export const metadata: Metadata = {
   title: "Sobre nosotros",
   description:
-    "Conocé a MEP Consulting: más de 20 años de experiencia en compliance y PLA/FT. Liderados por la Dra. María Eugenia Palomeque, Revisor Externo Independiente acreditado ante la UIF.",
+    "Conocé a MEP Compliance: más de 20 años de experiencia en compliance y PLA/FT. Liderados por la Dra. María Eugenia Palomeque, Revisor Externo Independiente acreditado ante la UIF.",
   alternates: { canonical: `${SITE_URL}/sobre-nosotros` },
   openGraph: {
-    title: "Sobre nosotros | MEP Consulting",
+    title: "Sobre nosotros | MEP Compliance",
     description:
       "Equipo especializado en compliance y prevención de lavado de activos. Dra. Palomeque, REI UIF. Más de 20 años de experiencia.",
   },

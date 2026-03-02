@@ -7,7 +7,7 @@ import { SITE_URL } from "@/app/lib/site";
 export const metadata: Metadata = {
   title: "Servicios",
   description:
-    "Soluciones a medida: análisis de riesgo, políticas y procedimientos, capacitación y auditoría continua. Compliance y REI para instituciones financieras y sujetos obligados. MEP Consulting.",
+    "Soluciones a medida: análisis de riesgo, políticas y procedimientos, capacitación y auditoría continua. Compliance y REI para instituciones financieras y sujetos obligados. MEP Compliance.",
   alternates: { canonical: `${SITE_URL}/servicios` },
   openGraph: {
     title: "Servicios | Soluciones de compliance a medida",
