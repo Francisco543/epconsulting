@@ -80,7 +80,7 @@ export default function FooterHero() {
 
           <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-2 mb-12">
             <a
-              href="mailto:info@estudiopalomeque.com"
+              href="mailto:info@mepcompliance.com"
               className="group text-sm transition-all duration-300"
               style={{
                 fontFamily: "var(--font-monument)",
@@ -88,7 +88,7 @@ export default function FooterHero() {
               }}
             >
               <span className="relative">
-                info@estudiopalomeque.com
+                info@mepcompliance.com
                 <span className="absolute bottom-0 left-0 w-0 h-px bg-[#D4AF37] transition-all duration-300 group-hover:w-full" />
               </span>
             </a>
@@ -110,7 +110,7 @@ export default function FooterHero() {
               }}
             >
               <span className="relative">
-                +54 11 1234-5678
+                +54 11 4916-9760
                 <span className="absolute bottom-0 left-0 w-0 h-px bg-[#D4AF37] transition-all duration-300 group-hover:w-full" />
               </span>
             </a>

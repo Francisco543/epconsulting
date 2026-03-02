@@ -7,8 +7,8 @@ import FooterHero from "@/app/components/FooterHero";
 const contactItems = [
   {
     label: "Email",
-    value: "info@estudiopalomeque.com",
-    href: "mailto:info@estudiopalomeque.com",
+    value: "info@mepcompliance.com",
+    href: "mailto:info@mepcompliance.com",
     icon: (
       <path
         strokeLinecap="round"
@@ -20,8 +20,8 @@ const contactItems = [
   },
   {
     label: "Teléfono",
-    value: "+54 11 1234-5678",
-    href: "tel:+541112345678",
+    value: "+54 11 4916-9760",
+    href: "tel:+541149169760",
     icon: (
       <path
         strokeLinecap="round"
@@ -40,11 +40,11 @@ export default function ContactoPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent("Consulta desde MEP Consulting");
+    const subject = encodeURIComponent("Consulta desde MEP Compliance");
     const body = encodeURIComponent(
-      `Nombre: ${name}\nEmail: ${email}\n\nMensaje:\n${message}`
+      `Nombre: ${name}\nEmail: ${email}\n\nMensaje:\n${message}`,
     );
-    window.location.href = `mailto:info@estudiopalomeque.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:info@mepcompliance.com?subject=${subject}&body=${body}`;
   };
 
   return (

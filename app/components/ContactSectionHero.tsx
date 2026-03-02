@@ -16,7 +16,7 @@ export default function ContactSectionHero() {
           if (entry.isIntersecting) setIsVisible(true);
         });
       },
-      { threshold: 0.08, rootMargin: "0px 0px -80px 0px" }
+      { threshold: 0.08, rootMargin: "0px 0px -80px 0px" },
     );
     observer.observe(el);
     return () => observer.unobserve(el);
@@ -25,8 +25,8 @@ export default function ContactSectionHero() {
   const contactItems = [
     {
       label: "Email",
-      value: "info@estudiopalomeque.com",
-      href: "mailto:info@estudiopalomeque.com",
+      value: "info@mepcompliance.com",
+      href: "mailto:info@mepcompliance.com",
       icon: (
         <path
           strokeLinecap="round"
@@ -39,8 +39,8 @@ export default function ContactSectionHero() {
     },
     {
       label: "Teléfono",
-      value: "+54 11 1234-5678",
-      href: "tel:+541112345678",
+      value: "+54 11 4916-9760",
+      href: "tel:+541149169760",
       icon: (
         <path
           strokeLinecap="round"
@@ -77,7 +77,9 @@ export default function ContactSectionHero() {
           <div className="w-full max-w-xl">
             <p
               className={`text-[11px] uppercase tracking-[0.35em] mb-4 transition-all duration-700 ease-out ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-4"
               }`}
               style={{
                 fontFamily: "var(--font-monument)",
@@ -90,7 +92,9 @@ export default function ContactSectionHero() {
 
             <h2
               className={`text-4xl sm:text-5xl lg:text-6xl leading-[0.95] mb-4 transition-all duration-700 ease-out ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-4"
               }`}
               style={{
                 fontFamily: "var(--font-rhymes)",
@@ -115,7 +119,9 @@ export default function ContactSectionHero() {
 
             <p
               className={`text-base sm:text-lg leading-relaxed mb-6 transition-all duration-700 ease-out ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-4"
               }`}
               style={{
                 fontFamily: "var(--font-monument)",
@@ -124,12 +130,14 @@ export default function ContactSectionHero() {
                 transitionDelay: "400ms",
               }}
             >
-              Estamos listos para ayudarte a transformar el cumplimiento normativo
-              en ventaja competitiva.
+              Estamos listos para ayudarte a transformar el cumplimiento
+              normativo en ventaja competitiva.
             </p>
             <p
               className={`text-[11px] uppercase tracking-[0.2em] mb-10 transition-all duration-700 ease-out ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-4"
               }`}
               style={{
                 fontFamily: "var(--font-monument)",
@@ -146,7 +154,9 @@ export default function ContactSectionHero() {
                   key={item.href}
                   href={item.href}
                   className={`group flex items-center justify-center gap-5 sm:gap-6 p-5 sm:p-6 rounded-xl border border-[#2a3d32] bg-[#1e3329]/50 hover:bg-[#1e3329] hover:border-[#D4AF37]/40 transition-all duration-300 ease-out hover:-translate-y-0.5 text-left ${
-                    isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                    isVisible
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 translate-y-4"
                   }`}
                   style={{
                     transitionDelay: `${450 + item.delay * 70}ms`,
@@ -188,7 +198,9 @@ export default function ContactSectionHero() {
 
             <div
               className={`transition-all duration-700 ease-out ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-4"
               }`}
               style={{ transitionDelay: "620ms" }}
             >

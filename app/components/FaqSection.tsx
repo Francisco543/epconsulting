@@ -38,7 +38,7 @@ const FAQ_ITEMS = [
     id: "contacto",
     question: "¿Cómo puedo solicitar una consulta o propuesta?",
     answer:
-      "Podés escribirnos por email a info@estudiopalomeque.com o llamarnos al +54 11 1234-5678. También podés completar el formulario en la página de contacto. Indicá brevemente su sector, tipo de organización y en qué necesitan apoyo (compliance, REI, capacitación, etc.) y te respondemos a la brevedad.",
+      "Podés escribirnos por email a info@mepcompliance.com o llamarnos al +54 11 4916-9760. También podés completar el formulario en la página de contacto. Indicá brevemente su sector, tipo de organización y en qué necesitan apoyo (compliance, REI, capacitación, etc.) y te respondemos a la brevedad.",
   },
 ];
 
@@ -56,7 +56,7 @@ export default function FaqSection() {
           if (entry.isIntersecting) setIsVisible(true);
         });
       },
-      { threshold: 0.08, rootMargin: "0px 0px -80px 0px" }
+      { threshold: 0.08, rootMargin: "0px 0px -80px 0px" },
     );
     observer.observe(el);
     return () => observer.unobserve(el);
@@ -133,13 +133,17 @@ export default function FaqSection() {
                   <span
                     className="shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-transform duration-300"
                     style={{
-                      backgroundColor: isOpen ? "#D4AF37" : "rgba(212, 175, 55, 0.2)",
+                      backgroundColor: isOpen
+                        ? "#D4AF37"
+                        : "rgba(212, 175, 55, 0.2)",
                       color: isOpen ? "#1a2e24" : "#D4AF37",
                     }}
                   >
                     <svg
                       className="w-4 h-4 transition-transform duration-300"
-                      style={{ transform: isOpen ? "rotate(180deg)" : "rotate(0deg)" }}
+                      style={{
+                        transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
+                      }}
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"

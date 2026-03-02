@@ -17,8 +17,8 @@ export function JsonLd() {
     },
     contactPoint: {
       "@type": "ContactPoint",
-      email: "info@estudiopalomeque.com",
-      telephone: "+54-11-1234-5678",
+      email: "info@mepcompliance.com",
+      telephone: "+54-11-4916-9760",
       contactType: "customer service",
       areaServed: "AR",
       availableLanguage: "Spanish",

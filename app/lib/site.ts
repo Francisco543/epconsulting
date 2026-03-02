@@ -5,7 +5,7 @@
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL || "https://www.mepconsulting.com.ar";
 
-export const SITE_NAME = "MEP Consulting";
+export const SITE_NAME = "MEP Compliance";
 
 export const DEFAULT_OG_IMAGE = "/og-image.png"; // Crear imagen 1200x630 para redes sociales
 
@@ -23,5 +23,5 @@ export const KEYWORDS = [
   "sujetos obligados",
   "normativa financiera",
   "Argentina",
-  "MEP Consulting",
+  "MEP Compliance",
 ];

@@ -36,19 +36,6 @@ export default function PageNav() {
                 {link.label}
               </Link>
             ))}
-            <Link
-              href="/"
-              className="flex items-center gap-2 px-5 py-2.5 border border-[#D4AF37] rounded-sm transition-all duration-300 hover:bg-[#D4AF37]/10"
-              style={{
-                fontFamily: "var(--font-monument)",
-                color: "#D4AF37",
-                fontSize: "13px",
-                letterSpacing: "0.08em",
-              }}
-            >
-              <span className="font-medium">MEP</span>
-              <span>Consulting</span>
-            </Link>
           </div>
 
           <button
@@ -102,17 +89,6 @@ export default function PageNav() {
                 </Link>
               ))}
             </nav>
-            <div className="mt-12">
-              <span
-                className="text-lg"
-                style={{
-                  fontFamily: "var(--font-rhymes)",
-                  color: "rgba(245, 230, 200, 0.8)",
-                }}
-              >
-                MEP Consulting
-              </span>
-            </div>
           </div>
         </div>
       )}

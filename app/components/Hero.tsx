@@ -66,10 +66,10 @@ export default function Hero() {
           }}
         >
           <Image
-            src="/hero_image2.png"
+            src="/office.png"
             alt=""
             fill
-            className="object-fill object-center"
+            className="object-cover object-center blur-[2px]"
             priority
           />
           {/* Overlay suave para legibilidad sin tapar el fondo */}
@@ -91,12 +91,10 @@ export default function Hero() {
           />
         </div>
 
-        {/* Navbar: absolute dentro del hero; al hacer scroll pasa a fixed flotante */}
+        {/* Navbar del landing (sobre el hero y fijo al hacer scroll) */}
         <nav
-          className={`left-0 right-0 z-50 px-4 sm:px-6 lg:px-10 py-5 lg:py-6 transition-all duration-300 ease-out ${
-            navFloating
-              ? "fixed top-0 border-b border-[#2a3d32] shadow-lg"
-              : "absolute top-0"
+          className={`left-0 right-0 z-50 px-4 sm:px-6 lg:px-10 py-3 lg:py-4 transition-all duration-300 ease-out ${
+            navFloating ? "fixed top-0 shadow-lg" : "absolute top-0"
           }`}
           style={{
             backgroundColor: navFloating ? "#1a2e24" : "transparent",
@@ -120,19 +118,6 @@ export default function Hero() {
                   {link.label}
                 </Link>
               ))}
-              <Link
-                href="/"
-                className="flex items-center gap-2 px-5 py-2.5 border border-[#D4AF37] rounded-sm transition-all duration-300 hover:bg-[#D4AF37]/10"
-                style={{
-                  fontFamily: "var(--font-monument)",
-                  color: "#D4AF37",
-                  fontSize: "13px",
-                  letterSpacing: "0.08em",
-                }}
-              >
-                <span className="font-medium">MEP</span>
-                <span>Consulting</span>
-              </Link>
             </div>
 
             <button
@@ -207,7 +192,8 @@ export default function Hero() {
                   transitionDelay: "80ms",
                 }}
               >
-                Expertos en <span style={{ color: "#D4AF37" }}>Compliance</span>
+                Su Socio Estratégico en{" "}
+                <span style={{ color: "#D4AF37" }}>Compliance</span>
               </h1>
               <div
                 className={`w-14 h-px mb-6 transition-all duration-700 ease-out ${
@@ -352,7 +338,7 @@ export default function Hero() {
                   color: "rgba(245, 230, 200, 0.8)",
                 }}
               >
-                MEP Consulting
+                MEP Compliance
               </span>
             </div>
           </div>

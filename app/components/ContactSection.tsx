@@ -21,7 +21,7 @@ export default function ContactSection() {
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     setFormData({
       ...formData,
@@ -60,9 +60,9 @@ export default function ContactSection() {
               className="text-xl text-zinc-600 mb-12 leading-relaxed"
               style={{ fontFamily: "var(--font-inter)" }}
             >
-              Estamos aquí para ayudarle. Contáctenos para una consulta
-              inicial y descubra cómo podemos apoyar sus necesidades de
-              compliance y prevención de lavado de activos.
+              Estamos aquí para ayudarle. Contáctenos para una consulta inicial
+              y descubra cómo podemos apoyar sus necesidades de compliance y
+              prevención de lavado de activos.
             </p>
 
             {/* Contact Info Cards */}
@@ -91,11 +91,11 @@ export default function ContactSection() {
                     Email
                   </h3>
                   <a
-                    href="mailto:info@estudiopalomeque.com"
+                    href="mailto:info@mepcompliance.com"
                     className="text-lg text-zinc-900 hover:text-orange-600 transition-colors font-medium"
                     style={{ fontFamily: "var(--font-inter)" }}
                   >
-                    info@estudiopalomeque.com
+                    info@mepcompliance.com
                   </a>
                 </div>
               </div>
@@ -128,7 +128,7 @@ export default function ContactSection() {
                     className="text-lg text-zinc-900 hover:text-orange-600 transition-colors font-medium"
                     style={{ fontFamily: "var(--font-inter)" }}
                   >
-                    +54 11 1234-5678
+                    +54 11 4916-9760
                   </a>
                 </div>
               </div>

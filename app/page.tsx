@@ -14,7 +14,8 @@ export const metadata: Metadata = {
     "Expertos en compliance y prevención de lavado de activos. Revisor Externo Independiente acreditado ante la UIF. Transformamos el cumplimiento normativo en ventaja competitiva para empresas e instituciones financieras en Argentina.",
   alternates: { canonical: SITE_URL },
   openGraph: {
-    title: "MEP Consulting | Expertos en Compliance y PLA/FT",
+    title:
+      "MEP Compliance | Expertos en Compliance y Prevención de Lavado de Activos",
     description:
       "Revisor Externo Independiente UIF. Soluciones integrales de compliance, prevención de lavado de activos y gestión de riesgos.",
     url: SITE_URL,

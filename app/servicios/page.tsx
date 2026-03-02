@@ -7,7 +7,7 @@ import { SITE_URL } from "@/app/lib/site";
 export const metadata: Metadata = {
   title: "Servicios",
   description:
-    "Soluciones a medida: análisis de riesgo, políticas y procedimientos, capacitación y auditoría continua. Compliance y REI para instituciones financieras y sujetos obligados. MEP Consulting.",
+    "Soluciones a medida: análisis de riesgo, políticas y procedimientos, capacitación y auditoría continua. Compliance y REI para instituciones financieras y sujetos obligados. MEP Compliance.",
   alternates: { canonical: `${SITE_URL}/servicios` },
   openGraph: {
     title: "Servicios | Soluciones de compliance a medida",
@@ -18,22 +18,22 @@ export const metadata: Metadata = {
 
 const SERVICIOS = [
   {
-    id: "analisis",
-    numero: "01",
-    titulo: "Análisis de riesgo",
-    descCorta:
-      "Evaluación personalizada para identificar y priorizar riesgos de compliance en su organización.",
-    descLarga:
-      "Realizamos un diagnóstico integral de su estructura, procesos y exposición normativa para detectar brechas y priorizar acciones. Incluye mapeo de riesgos PLA/FT, evaluación de controles existentes y recomendaciones priorizadas con plazos y responsables.",
-  },
-  {
     id: "politicas",
-    numero: "02",
+    numero: "01",
     titulo: "Políticas y procedimientos",
     descCorta:
       "Diseño e implementación de marcos normativos adaptados a su sector y tamaño.",
     descLarga:
       "Elaboramos políticas de prevención de lavado de activos, manuales de cumplimiento y procedimientos operativos alineados con la normativa UIF y las mejores prácticas. Todo adaptado a su sector, tamaño y nivel de riesgo, con soporte para su aprobación e implementación interna.",
+  },
+  {
+    id: "analisis",
+    numero: "02",
+    titulo: "Análisis de riesgo",
+    descCorta:
+      "Evaluación personalizada para identificar y priorizar riesgos de compliance en su organización.",
+    descLarga:
+      "Realizamos un diagnóstico integral de su estructura, procesos y exposición normativa para detectar brechas y priorizar acciones. Incluye mapeo de riesgos PLA/FT, evaluación de controles existentes y recomendaciones priorizadas con plazos y responsables.",
   },
   {
     id: "capacitacion",
@@ -240,7 +240,10 @@ export default function ServiciosPage() {
                 <div
                   className="w-12 h-px shrink-0"
                   style={{
-                    backgroundColor: i % 2 === 0 ? "rgba(212, 175, 55, 0.4)" : "rgba(26, 26, 26, 0.15)",
+                    backgroundColor:
+                      i % 2 === 0
+                        ? "rgba(212, 175, 55, 0.4)"
+                        : "rgba(26, 26, 26, 0.15)",
                   }}
                 />
                 <p
@@ -309,7 +312,9 @@ export default function ServiciosPage() {
               }}
             >
               Solicitar consulta
-              <span className="transition-transform duration-300 group-hover:translate-x-0.5">→</span>
+              <span className="transition-transform duration-300 group-hover:translate-x-0.5">
+                →
+              </span>
             </Link>
             <Link
               href="/areas-practica"

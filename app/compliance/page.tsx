@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import NavbarNew from "@/app/components/NavbarNew";
+import Navbar from "@/app/components/Navbar";
 import FooterNew from "@/app/components/FooterNew";
 import ScrollReveal from "@/components/ScrollReveal";
 
@@ -14,7 +14,7 @@ export default function CompliancePage() {
         <main className="relative">
           {/* Hero Section - Normal, no fixed */}
           <section className="relative w-full h-screen bg-[#f8f8f6]">
-            <NavbarNew />
+            <Navbar />
 
             <div className="w-full h-full p-3 sm:p-4 lg:p-5">
               <div className="w-full h-full bg-[#1a1a1a] rounded-3xl overflow-hidden relative flex items-center justify-center">
