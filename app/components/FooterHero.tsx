@@ -110,7 +110,7 @@ export default function FooterHero() {
               }}
             >
               <span className="relative">
-                +54 11 1234-5678
+                +54 11 4916-9760
                 <span className="absolute bottom-0 left-0 w-0 h-px bg-[#D4AF37] transition-all duration-300 group-hover:w-full" />
               </span>
             </a>

@@ -20,7 +20,7 @@ const contactItems = [
   },
   {
     label: "Teléfono",
-    value: "+54 11 1234-5678",
+    value: "+54 11 4916-9760",
     href: "tel:+541112345678",
     icon: (
       <path
@@ -42,7 +42,7 @@ export default function ContactoPage() {
     e.preventDefault();
     const subject = encodeURIComponent("Consulta desde MEP Consulting");
     const body = encodeURIComponent(
-      `Nombre: ${name}\nEmail: ${email}\n\nMensaje:\n${message}`
+      `Nombre: ${name}\nEmail: ${email}\n\nMensaje:\n${message}`,
     );
     window.location.href = `mailto:info@estudiopalomeque.com?subject=${subject}&body=${body}`;
   };

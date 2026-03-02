@@ -66,10 +66,10 @@ export default function Hero() {
           }}
         >
           <Image
-            src="/hero_image2.png"
+            src="/office.png"
             alt=""
             fill
-            className="object-fill object-center"
+            className="object-fill object-center blur-[2px]"
             priority
           />
           {/* Overlay suave para legibilidad sin tapar el fondo */}
@@ -207,7 +207,8 @@ export default function Hero() {
                   transitionDelay: "80ms",
                 }}
               >
-                Expertos en <span style={{ color: "#D4AF37" }}>Compliance</span>
+                Su Socio Estratégico en{" "}
+                <span style={{ color: "#D4AF37" }}>Compliance</span>
               </h1>
               <div
                 className={`w-14 h-px mb-6 transition-all duration-700 ease-out ${

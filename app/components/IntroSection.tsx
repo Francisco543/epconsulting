@@ -16,7 +16,7 @@ export default function IntroSection() {
           if (entry.isIntersecting) setIsVisible(true);
         });
       },
-      { threshold: 0.2, rootMargin: "0px 0px -100px 0px" }
+      { threshold: 0.2, rootMargin: "0px 0px -100px 0px" },
     );
     observer.observe(el);
     return () => observer.unobserve(el);
@@ -41,8 +41,8 @@ export default function IntroSection() {
                 color: "#1a1a1a",
               }}
             >
-              Expertos en{" "}
-              <span style={{ color: "#D4AF37" }}>Compliance</span>
+              Tu reputación,{" "}
+              <span style={{ color: "#D4AF37" }}>nuestro mayor compromiso</span>
             </h2>
             <div
               className="w-14 h-px mt-6 mb-8"
@@ -56,7 +56,8 @@ export default function IntroSection() {
                 letterSpacing: "0.02em",
               }}
             >
-              Revisor Externo Independiente acreditado ante la UIF · Más de 20 años de experiencia
+              Revisor Externo Independiente acreditado ante la UIF · Más de 20
+              años de experiencia
             </p>
           </div>
           <div>
@@ -68,7 +69,10 @@ export default function IntroSection() {
                 lineHeight: 1.75,
               }}
             >
-              Acompañamos a instituciones financieras y empresas en el diseño e implementación de programas de cumplimiento normativo. Soluciones a medida que reducen riesgos y fortalecen la confianza de clientes y reguladores.
+              Acompañamos a instituciones financieras y empresas en el diseño e
+              implementación de programas de cumplimiento normativo. Soluciones
+              a medida que reducen riesgos y fortalecen la confianza de clientes
+              y reguladores.
             </p>
             <Link
               href="/sobre-nosotros"

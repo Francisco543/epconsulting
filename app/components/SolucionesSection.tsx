@@ -95,16 +95,16 @@ function SolucionCard({
 
 const CARDS = [
   {
-    title: "Análisis de riesgo",
-    desc: "Evaluación personalizada para identificar y priorizar riesgos de compliance en su organización.",
-    href: "/servicios#analisis",
-    delay: 0,
-  },
-  {
     title: "Políticas y procedimientos",
     desc: "Diseño e implementación de marcos normativos adaptados a su sector y tamaño.",
     href: "/servicios#politicas",
     delay: 1,
+  },
+  {
+    title: "Análisis de riesgo",
+    desc: "Evaluación personalizada para identificar y priorizar riesgos de compliance en su organización.",
+    href: "/servicios#analisis",
+    delay: 0,
   },
   {
     title: "Capacitación",
@@ -133,7 +133,7 @@ export default function SolucionesSection() {
           if (entry.isIntersecting) setIsVisible(true);
         });
       },
-      { threshold: 0.1, rootMargin: "0px 0px -80px 0px" }
+      { threshold: 0.1, rootMargin: "0px 0px -80px 0px" },
     );
     observer.observe(el);
     return () => observer.unobserve(el);
@@ -178,7 +178,9 @@ export default function SolucionesSection() {
             lineHeight: 1.65,
           }}
         >
-          Análisis de riesgo, políticas y procedimientos, capacitación y auditoría continua. Diseñamos cada servicio según su sector y objetivos.
+          Análisis de riesgo, políticas y procedimientos, capacitación y
+          auditoría continua. Diseñamos cada servicio según su sector y
+          objetivos.
         </p>
       </div>
 
