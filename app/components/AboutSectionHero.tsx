@@ -118,8 +118,9 @@ export default function AboutSectionHero({
             Con más de 20 años de experiencia en compliance y prevención de
             lavado de activos, lidera nuestra consultora. Se ha desempeñado como
             Oficial de Cumplimiento y como Chief Compliance Officer en
-            instituciones financieras líderes; Es además Revisora Externa
-            Independiente habilitada por la UIF.
+            instituciones financieras líderes. Es además Revisora Externa
+            Independiente habilitada por la Unidad de Información Financiera
+            (UIF).
           </p>
 
           <div
