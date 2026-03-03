@@ -122,24 +122,16 @@ export default function PrivacidadPage() {
                   color: "rgba(26, 26, 26, 0.8)",
                 }}
               >
-                <li>
-                  Datos de identificación: nombre, apellidos, DNI o documento de
-                  identidad
-                </li>
+                <li>Datos de identificación: nombre, apellidos.</li>
                 <li>
                   Datos de contacto: dirección de correo electrónico, número de
-                  teléfono, dirección postal
+                  teléfono.
                 </li>
-                <li>
-                  Datos profesionales: empresa, cargo, sector de actividad
-                </li>
-                <li>
-                  Datos de navegación: dirección IP, cookies, datos de
-                  navegación
-                </li>
+                <li>Datos profesionales: empresa, cargo.</li>
+                <li>Datos de navegación: dirección IP, cookies.</li>
                 <li>
                   Datos de comunicación: mensajes, consultas, solicitudes de
-                  información
+                  información.
                 </li>
               </ul>
             </section>
@@ -177,7 +169,7 @@ export default function PrivacidadPage() {
                   Gestionar y responder a sus consultas y solicitudes de
                   información
                 </li>
-                <li>Prestar los servicios jurídicos solicitados</li>
+                <li>Prestar los servicios solicitados</li>
                 <li>
                   Enviar comunicaciones comerciales sobre nuestros servicios
                   (con su consentimiento)

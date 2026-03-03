@@ -66,21 +66,8 @@ export default function AvisoLegalPage() {
                   color: "#1a1a1a",
                 }}
               >
-                1. Datos Identificativos
+                1. Datos de identificación
               </h2>
-              <p
-                className="text-base leading-relaxed mb-4"
-                style={{
-                  fontFamily: "var(--font-monument)",
-                  color: "rgba(26, 26, 26, 0.8)",
-                  lineHeight: 1.75,
-                }}
-              >
-                En cumplimiento con el deber de información recogido en artículo
-                10 de la Ley 34/2002, de 11 de julio, de Servicios de la
-                Sociedad de la Información y del Comercio Electrónico, a
-                continuación se reflejan los siguientes datos:
-              </p>
               <ul
                 className="list-disc pl-6 space-y-2"
                 style={{
@@ -237,11 +224,10 @@ export default function AvisoLegalPage() {
                   lineHeight: 1.75,
                 }}
               >
-                Sin embargo, y en cumplimiento de lo dispuesto en los artículos
-                11 y 16 de la LSSI-CE, MEP Compliance se compromete a retirar o
-                en su caso bloquear aquellos contenidos que puedan afectar o
-                contravenir la legislación nacional o internacional, derechos de
-                terceros o la moral y el orden público.
+                Sin embargo, MEP Compliance se compromete a retirar o en su caso
+                bloquear aquellos contenidos que puedan afectar o contravenir la
+                legislación nacional o internacional, derechos de terceros o la
+                moral y el orden público.
               </p>
             </section>
 

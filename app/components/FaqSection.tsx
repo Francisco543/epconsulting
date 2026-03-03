@@ -32,7 +32,7 @@ const FAQ_ITEMS = [
     id: "alcance",
     question: "¿Trabajan solo en Argentina?",
     answer:
-      "Sí. Estamos radicados en Buenos Aires y trabajamos con sujetos obligados y instituciones en Argentina, en línea con la normativa de la UIF y los estándares locales. Si su organización opera en el país y requiere servicios de compliance o REI, podemos acompañarlos.",
+      "No, brindamos servicios a nivel global. Si bien nuestra sede central está en Buenos Aires, trabajamos con organizaciones y sujetos obligados de todo el mundo. Adaptamos nuestro asesoramiento en compliance tanto a los estándares internacionales como a las normativas específicas de cada jurisdicción donde operen nuestros clientes.",
   },
   {
     id: "contacto",

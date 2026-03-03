@@ -219,7 +219,7 @@ export default function Hero() {
                 }}
               >
                 Transformamos el cumplimiento normativo en ventaja competitiva
-                para su organización.
+                para tu organización.
               </p>
               <p
                 className={`text-[10px] uppercase tracking-[0.28em] mb-10 transition-all duration-700 ease-out ${
