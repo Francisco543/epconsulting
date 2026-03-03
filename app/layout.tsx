@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
-import CustomCursor from "./components/CustomCursor";
-import { JsonLd } from "./components/JsonLd";
+import CustomCursor from "./components/ui/CustomCursor";
+import { JsonLd } from "./components/ui/JsonLd";
 import { Analytics } from "@vercel/analytics/next";
 import {
   SITE_URL,

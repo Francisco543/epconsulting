@@ -1,5 +1,5 @@
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import Navbar from "@/app/components/layout/Navbar";
+import FooterLegal from "@/app/components/layout/FooterLegal";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -290,7 +290,7 @@ export default function TerminosPage() {
           </div>
         </div>
       </main>
-      <Footer />
+      <FooterLegal />
     </div>
   );
 }

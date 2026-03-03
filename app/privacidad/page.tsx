@@ -1,6 +1,6 @@
 import Link from "next/link";
-import PageNav from "@/app/components/PageNav";
-import FooterHero from "@/app/components/FooterHero";
+import PageNav from "@/app/components/layout/PageNav";
+import Footer from "@/app/components/layout/Footer";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -482,7 +482,7 @@ export default function PrivacidadPage() {
         </div>
       </section>
 
-      <FooterHero />
+      <Footer />
     </div>
   );
 }

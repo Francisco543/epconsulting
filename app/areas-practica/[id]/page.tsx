@@ -2,8 +2,8 @@
 
 import { use, useState, useEffect, useRef, type ReactNode } from "react";
 import Link from "next/link";
-import PageNav from "@/app/components/PageNav";
-import FooterHero from "@/app/components/FooterHero";
+import PageNav from "@/app/components/layout/PageNav";
+import Footer from "@/app/components/layout/Footer";
 
 const AREA_IDS = ["1", "2", "3", "4", "5", "6"];
 
@@ -328,7 +328,7 @@ export default function PracticeAreaPage({
             </Link>
           </div>
         </div>
-        <FooterHero />
+        <Footer />
       </div>
     );
   }
@@ -802,7 +802,7 @@ export default function PracticeAreaPage({
         </div>
       </section>
 
-      <FooterHero />
+      <Footer />
     </div>
   );
 }
