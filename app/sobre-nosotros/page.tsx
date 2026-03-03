@@ -1,7 +1,7 @@
 import Link from "next/link";
-import PageNav from "@/app/components/PageNav";
-import FooterHero from "@/app/components/FooterHero";
-import AboutSectionHero from "@/app/components/AboutSectionHero";
+import PageNav from "@/app/components/layout/PageNav";
+import Footer from "@/app/components/layout/Footer";
+import AboutSection from "@/app/components/sections/AboutSection";
 import type { Metadata } from "next";
 import { SITE_URL } from "@/app/lib/site";
 
@@ -113,7 +113,7 @@ export default function SobreNosotrosPage() {
       </section>
 
       {/* Bloque Dra. Palomeque — mismo componente que en home */}
-      <AboutSectionHero linkLabel="Contactar" linkHref="/contacto" />
+      <AboutSection linkLabel="Contactar" linkHref="/contacto" />
 
       {/* CTA */}
       <section
@@ -157,7 +157,7 @@ export default function SobreNosotrosPage() {
         </div>
       </section>
 
-      <FooterHero />
+      <Footer />
     </div>
   );
 }

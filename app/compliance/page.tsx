@@ -1,8 +1,8 @@
 "use client";
 
 import { useRef } from "react";
-import Navbar from "@/app/components/Navbar";
-import FooterNew from "@/app/components/FooterNew";
+import Navbar from "@/app/components/layout/Navbar";
+import FooterCompliance from "@/app/components/layout/FooterCompliance";
 import ScrollReveal from "@/components/ScrollReveal";
 
 export default function CompliancePage() {
@@ -639,7 +639,7 @@ export default function CompliancePage() {
           </section>
         </main>
 
-        <FooterNew />
+        <FooterCompliance />
       </div>
     </>
   );

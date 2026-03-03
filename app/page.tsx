@@ -1,10 +1,10 @@
-import Hero from "./components/Hero";
-import IntroSection from "./components/IntroSection";
-import SolucionesSection from "./components/SolucionesSection";
-import AboutSectionHero from "./components/AboutSectionHero";
-import ContactSectionHero from "./components/ContactSectionHero";
-import FaqSection from "./components/FaqSection";
-import FooterHero from "./components/FooterHero";
+import Hero from "./components/sections/Hero";
+import IntroSection from "./components/sections/IntroSection";
+import SolucionesSection from "./components/sections/SolucionesSection";
+import AboutSection from "./components/sections/AboutSection";
+import ContactCta from "./components/sections/ContactCta";
+import FaqSection from "./components/sections/FaqSection";
+import Footer from "./components/layout/Footer";
 import { SITE_URL } from "./lib/site";
 import type { Metadata } from "next";
 
@@ -28,10 +28,10 @@ export default function Home() {
       <Hero />
       <IntroSection />
       <SolucionesSection />
-      <AboutSectionHero />
-      <ContactSectionHero />
+      <AboutSection />
+      <ContactCta />
       <FaqSection />
-      <FooterHero />
+      <Footer />
     </main>
   );
 }

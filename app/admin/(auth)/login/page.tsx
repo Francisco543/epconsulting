@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { signInWithEmailPassword } from "@/app/services/authService";
-import Logo from "@/app/components/Logo";
+import Logo from "@/app/components/layout/Logo";
 
 export default function AdminLoginPage() {
   const router = useRouter();
