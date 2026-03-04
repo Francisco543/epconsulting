@@ -1,9 +1,12 @@
 "use client";
 
-import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 
 export default function ContactSectionHero() {
+  const t = useTranslations("home.contactCta");
+  const tCommon = useTranslations("common");
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -24,7 +27,7 @@ export default function ContactSectionHero() {
 
   const contactItems = [
     {
-      label: "Email",
+      label: tCommon("email"),
       value: "info@mepcompliance.com",
       href: "mailto:info@mepcompliance.com",
       icon: (
@@ -38,7 +41,7 @@ export default function ContactSectionHero() {
       delay: 0,
     },
     {
-      label: "Teléfono",
+      label: tCommon("phone"),
       value: "+54 11 4916-9760",
       href: "tel:+541149169760",
       icon: (
@@ -87,7 +90,7 @@ export default function ContactSectionHero() {
                 transitionDelay: "150ms",
               }}
             >
-              Contacto
+              {t("label")}
             </p>
 
             <h2
@@ -103,7 +106,7 @@ export default function ContactSectionHero() {
                 transitionDelay: "250ms",
               }}
             >
-              Hablemos
+              {t("title")}
             </h2>
 
             <div
@@ -130,8 +133,7 @@ export default function ContactSectionHero() {
                 transitionDelay: "400ms",
               }}
             >
-              Estamos listos para ayudarte a transformar el cumplimiento
-              normativo en ventaja competitiva.
+              {t("subtitle")}
             </p>
             <p
               className={`text-[11px] uppercase tracking-[0.2em] mb-10 transition-all duration-700 ease-out ${
@@ -145,7 +147,7 @@ export default function ContactSectionHero() {
                 transitionDelay: "420ms",
               }}
             >
-              Consulta sin compromiso · Respondemos en 24 a 48 horas
+              {t("disclaimer")}
             </p>
 
             <div className="space-y-4 mb-10">
@@ -213,7 +215,7 @@ export default function ContactSectionHero() {
                 }}
               >
                 <span className="relative">
-                  Enviar mensaje
+                  {t("sendMessage")}
                   <span className="absolute bottom-0 left-0 w-0 h-px bg-[#D4AF37] transition-all duration-300 group-hover:w-full" />
                 </span>
                 <span className="transition-transform duration-300 group-hover:translate-x-0.5">

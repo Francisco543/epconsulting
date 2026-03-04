@@ -1,0 +1,204 @@
+{
+  "common": {
+    "nav": {
+      "home": "Inicio",
+      "areas": "Áreas de Práctica",
+      "services": "Servicios",
+      "about": "Sobre Nosotros",
+      "contact": "Contacto",
+      "menu": "Menú",
+      "nosotros": "Nosotros"
+    },
+    "footer": {
+      "tagline": "MEP Compliance. Especialistas en prevención del lavado de activos, financiación del terrorismo y compliance. Revisor Externo Independiente acreditado ante la UIF.",
+      "legal": "Aviso Legal",
+      "privacy": "Privacidad",
+      "copyright": "© {year} MEP Compliance",
+      "rei": "Revisor Externo Independiente UIF"
+    },
+    "lang": "Idioma",
+    "seeMore": "Conocer más",
+    "sendMessage": "Enviar mensaje",
+    "viewMore": "Ver más",
+    "viewAllServices": "Ver todos los servicios",
+    "email": "Email",
+    "phone": "Teléfono"
+  },
+  "home": {
+    "hero": {
+      "yearsLabel": "Años de experiencia",
+      "years": "20+",
+      "title": "Su Socio Estratégico en",
+      "titleHighlight": "Compliance",
+      "subtitle": "Transformamos el cumplimiento normativo en ventaja competitiva para tu organización.",
+      "reiLabel": "Revisor Externo Independiente acreditado ante la UIF",
+      "seeMore": "Conocer más",
+      "experts": "EXPERTOS EN COMPLIANCE"
+    },
+    "intro": {
+      "title": "Tu reputación,",
+      "titleHighlight": "nuestro mayor compromiso",
+      "subtitle": "Revisor Externo Independiente acreditado ante la UIF · Más de 20 años de experiencia",
+      "body": "Acompañamos a instituciones financieras y empresas en el diseño e implementación de programas de cumplimiento normativo. Soluciones a medida que reducen riesgos y fortalecen la confianza de clientes y reguladores.",
+      "seeMore": "Conocer más"
+    },
+    "soluciones": {
+      "label": "Servicios",
+      "title": "Soluciones",
+      "titleHighlight": "a medida",
+      "description": "Análisis de riesgo, políticas y procedimientos, capacitación y auditoría continua. Diseñamos cada servicio según su sector y objetivos.",
+      "viewMore": "Ver más",
+      "viewAllServices": "Ver todos los servicios",
+      "cards": {
+        "politicas": {
+          "title": "Políticas y procedimientos",
+          "desc": "Diseño e implementación de marcos normativos adaptados a su sector y tamaño."
+        },
+        "analisis": {
+          "title": "Análisis de riesgo",
+          "desc": "Evaluación personalizada para identificar y priorizar riesgos de compliance en su organización."
+        },
+        "capacitacion": {
+          "title": "Capacitación",
+          "desc": "Programas de formación para equipos y líderes en prevención de lavado de activos."
+        },
+        "auditoria": {
+          "title": "Auditoría continua",
+          "desc": "Revisión y mejora continua de sus procesos de cumplimiento normativo."
+        }
+      }
+    },
+    "about": {
+      "label": "Liderazgo",
+      "title": "Dra. María Eugenia",
+      "titleHighlight": "Palomeque",
+      "role": "Abogada Principal · Revisor Externo Independiente UIF",
+      "bio": "Con más de 20 años de experiencia en compliance y prevención de lavado de activos, lidera nuestra consultora. Se ha desempeñado como Oficial de Cumplimiento y como Chief Compliance Officer en instituciones financieras líderes. Es además Revisora Externa Independiente habilitada por la Unidad de Información Financiera (UIF).",
+      "years": "Años de experiencia",
+      "rei": "UIF Acreditado",
+      "seeMore": "Conocer más",
+      "contact": "Contactar"
+    },
+    "contactCta": {
+      "label": "Contacto",
+      "title": "Hablemos",
+      "subtitle": "Estamos listos para ayudarte a transformar el cumplimiento normativo en ventaja competitiva.",
+      "disclaimer": "Consulta sin compromiso · Respondemos en 24 a 48 horas",
+      "sendMessage": "Enviar mensaje"
+    },
+    "faq": {
+      "label": "FAQ",
+      "title": "Preguntas",
+      "titleHighlight": "frecuentes",
+      "description": "Respuestas breves sobre nuestros servicios, el REI y cómo trabajamos.",
+      "contactPrompt": "¿No encontrás tu pregunta?",
+      "contactLink": "Escribinos",
+      "items": {
+        "rei": {
+          "q": "¿Qué es un Revisor Externo Independiente (REI)?",
+          "a": "El Revisor Externo Independiente es un profesional acreditado ante la Unidad de Información Financiera (UIF) que realiza la revisión independiente del sistema de prevención de lavado de activos y financiación del terrorismo de los sujetos obligados. Emite informes que se presentan ante la UIF y contribuyen al cumplimiento normativo y a la transparencia del programa de compliance."
+        },
+        "sujetos": {
+          "q": "¿Quiénes son sujetos obligados ante la UIF?",
+          "a": "Son sujetos obligados las entidades y personas que por su actividad quedan alcanzadas por la ley de prevención de lavado de activos y financiación del terrorismo: instituciones financieras, entidades no financieras (casas de cambio, inmobiliarias, etc.), profesionales (abogados, contadores, escribanos en ciertos actos), y otros sectores regulados. La normativa define el listado completo según la actividad."
+        },
+        "plazos": {
+          "q": "¿En qué plazos responden las consultas?",
+          "a": "Respondemos consultas iniciales en un plazo de 24 a 48 horas hábiles. Para propuestas o alcance de servicios según la complejidad del proyecto, coordinamos una reunión o llamada y enviamos una propuesta en un plazo acordado. En auditorías REI y proyectos de compliance, los plazos se definen según el cronograma acordado con el cliente."
+        },
+        "proceso": {
+          "q": "¿Cómo es el proceso típico de trabajo?",
+          "a": "Tras el primer contacto, realizamos una reunión para conocer su necesidad (análisis de riesgo, políticas, capacitación, REI, etc.). A partir de ahí elaboramos una propuesta con alcance, metodología y plazos. Una vez aprobada, avanzamos según el tipo de servicio: relevamiento, documentación, capacitaciones, auditoría o emisión de informes. Mantenemos comunicación fluida y entregables en los tiempos acordados."
+        },
+        "alcance": {
+          "q": "¿Trabajan solo en Argentina?",
+          "a": "No, brindamos servicios a nivel global. Si bien nuestra sede central está en Buenos Aires, trabajamos con organizaciones y sujetos obligados de todo el mundo. Adaptamos nuestro asesoramiento en compliance tanto a los estándares internacionales como a las normativas específicas de cada jurisdicción donde operen nuestros clientes."
+        },
+        "contacto": {
+          "q": "¿Cómo puedo solicitar una consulta o propuesta?",
+          "a": "Podés escribirnos por email a info@mepcompliance.com o llamarnos al +54 11 4916-9760. También podés completar el formulario en la página de contacto. Indicá brevemente su sector, tipo de organización y en qué necesitan apoyo (compliance, REI, capacitación, etc.) y te respondemos a la brevedad."
+        }
+      }
+    }
+  },
+  "contact": {
+    "label": "Contacto",
+    "title": "Hablemos",
+    "subtitle": "Estamos listos para ayudarte a transformar el cumplimiento normativo en ventaja competitiva.",
+    "contactData": "Datos de contacto",
+    "contactIntro": "Escribinos por email o llamanos. Te respondemos a la brevedad.",
+    "sendMessage": "Enviar mensaje",
+    "formIntro": "Completá el formulario y te contestamos por email. Los datos se almacenan de forma segura y sólo se utilizan para responder tu consulta.",
+    "name": "Nombre completo",
+    "namePlaceholder": "Su nombre",
+    "emailPlaceholder": "su@email.com",
+    "phoneOptional": "Teléfono (opcional)",
+    "phonePlaceholder": "+54 11 1234-5678",
+    "company": "Empresa (opcional)",
+    "companyPlaceholder": "Nombre de la empresa",
+    "message": "Mensaje",
+    "messagePlaceholder": "Escribí tu consulta o mensaje...",
+    "submit": "Enviar mensaje",
+    "sending": "Enviando...",
+    "success": "Mensaje enviado. Te responderemos a la brevedad.",
+    "error": "Hubo un error al enviar. Intentá de nuevo o contactanos por email."
+  },
+  "terms": {
+    "title": "Términos y Condiciones",
+    "label": "Términos"
+  },
+  "privacy": {
+    "title": "Privacidad",
+    "label": "Privacidad"
+  },
+  "legal": {
+    "title": "Aviso Legal",
+    "label": "Aviso Legal"
+  },
+  "cookies": {
+    "title": "Política de Cookies",
+    "label": "Cookies"
+  },
+  "aboutPage": {
+    "label": "Nosotros",
+    "title": "Sobre",
+    "titleHighlight": "nosotros",
+    "subtitle": "Una consultora especializada en compliance y prevención del lavado de activos, con más de 20 años de experiencia y acreditación REI UIF."
+  },
+  "auth": {
+    "adminLogin": {
+      "title": "Panel de administración",
+      "subtitle": "Ingresá con tu cuenta de administrador.",
+      "email": "Email",
+      "password": "Contraseña",
+      "submit": "Ingresar",
+      "error": "Credenciales inválidas o error al iniciar sesión."
+    },
+    "portalLogin": {
+      "title": "Portal de empresa",
+      "subtitle": "Ingresá con tu cuenta de gestor.",
+      "email": "Email",
+      "password": "Contraseña",
+      "submit": "Ingresar",
+      "forgot": "¿Olvidaste tu contraseña?",
+      "forgotTitle": "Recuperar contraseña",
+      "forgotSubmit": "Enviar enlace",
+      "forgotSent": "Revisá tu correo. Te enviamos un enlace para restablecer tu contraseña.",
+      "backToLogin": "Volver al inicio de sesión",
+      "error": "Error al iniciar sesión"
+    },
+    "empleadosLogin": {
+      "title": "Acceso empleados",
+      "subtitle": "Ingresá con tu cuenta para ver tus cursos.",
+      "email": "Email",
+      "password": "Contraseña",
+      "submit": "Ingresar",
+      "forgot": "¿Olvidaste tu contraseña?",
+      "forgotTitle": "Recuperar contraseña",
+      "forgotSubmit": "Enviar enlace",
+      "forgotSent": "Revisá tu correo. Te enviamos un enlace para restablecer tu contraseña.",
+      "backToLogin": "Volver al inicio de sesión",
+      "error": "Credenciales incorrectas"
+    }
+  }
+}

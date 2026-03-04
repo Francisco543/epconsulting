@@ -1,7 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 
 function SolucionCard({
   title,
@@ -10,6 +11,7 @@ function SolucionCard({
   index,
   isVisible,
   delay,
+  viewMore,
 }: {
   title: string;
   desc: string;
@@ -17,6 +19,7 @@ function SolucionCard({
   index: number;
   isVisible: boolean;
   delay: number;
+  viewMore: string;
 }) {
   const [hovered, setHovered] = useState(false);
 
@@ -80,7 +83,7 @@ function SolucionCard({
             color: hovered ? "#D4AF37" : "rgba(245, 230, 200, 0.4)",
           }}
         >
-          Ver más
+          {viewMore}
         </span>
         <span
           className="text-[#D4AF37] transition-transform duration-300 group-hover:translate-x-0.5"
@@ -93,34 +96,15 @@ function SolucionCard({
   );
 }
 
-const CARDS = [
-  {
-    title: "Políticas y procedimientos",
-    desc: "Diseño e implementación de marcos normativos adaptados a su sector y tamaño.",
-    href: "/servicios#politicas",
-    delay: 1,
-  },
-  {
-    title: "Análisis de riesgo",
-    desc: "Evaluación personalizada para identificar y priorizar riesgos de compliance en su organización.",
-    href: "/servicios#analisis",
-    delay: 0,
-  },
-  {
-    title: "Capacitación",
-    desc: "Programas de formación para equipos y líderes en prevención de lavado de activos.",
-    href: "/servicios#capacitacion",
-    delay: 2,
-  },
-  {
-    title: "Auditoría continua",
-    desc: "Revisión y mejora continua de sus procesos de cumplimiento normativo.",
-    href: "/servicios#auditoria",
-    delay: 3,
-  },
-];
+const CARD_KEYS = [
+  { key: "politicas", href: "/servicios#politicas", delay: 1 },
+  { key: "analisis", href: "/servicios#analisis", delay: 0 },
+  { key: "capacitacion", href: "/servicios#capacitacion", delay: 2 },
+  { key: "auditoria", href: "/servicios#auditoria", delay: 3 },
+] as const;
 
 export default function SolucionesSection() {
+  const t = useTranslations("home.soluciones");
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -158,7 +142,7 @@ export default function SolucionesSection() {
             color: "rgba(245, 230, 200, 0.5)",
           }}
         >
-          Servicios
+          {t("label")}
         </p>
         <h2
           className="text-4xl sm:text-5xl lg:text-6xl leading-[0.95] mb-5"
@@ -168,7 +152,7 @@ export default function SolucionesSection() {
             fontWeight: 600,
           }}
         >
-          Soluciones <span style={{ color: "#D4AF37" }}>a medida</span>
+          {t("title")} <span style={{ color: "#D4AF37" }}>{t("titleHighlight")}</span>
         </h2>
         <p
           className="text-base max-w-2xl"
@@ -178,23 +162,22 @@ export default function SolucionesSection() {
             lineHeight: 1.65,
           }}
         >
-          Análisis de riesgo, políticas y procedimientos, capacitación y
-          auditoría continua. Diseñamos cada servicio según su sector y
-          objetivos.
+          {t("description")}
         </p>
       </div>
 
       <div className="flex-1 min-h-0 flex flex-col mx-auto w-full max-w-7xl px-6 sm:px-8 lg:px-12 pb-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0 flex-1 min-h-0 items-stretch">
-          {CARDS.map((card, index) => (
+          {CARD_KEYS.map((card, index) => (
             <SolucionCard
               key={card.href}
-              title={card.title}
-              desc={card.desc}
+              title={t(`cards.${card.key}.title`)}
+              desc={t(`cards.${card.key}.desc`)}
               href={card.href}
               index={index}
               isVisible={isVisible}
               delay={card.delay}
+              viewMore={t("viewMore")}
             />
           ))}
         </div>
@@ -210,7 +193,7 @@ export default function SolucionesSection() {
           }}
         >
           <span className="relative">
-            Ver todos los servicios
+            {t("viewAllServices")}
             <span className="absolute bottom-0 left-0 w-0 h-px bg-[#D4AF37] transition-all duration-300 group-hover:w-full" />
           </span>
           <span className="transition-transform duration-300 group-hover:translate-x-0.5">

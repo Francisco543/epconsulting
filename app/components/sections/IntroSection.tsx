@@ -1,9 +1,11 @@
 "use client";
 
-import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 
 export default function IntroSection() {
+  const t = useTranslations("home.intro");
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -41,8 +43,8 @@ export default function IntroSection() {
                 color: "#1a1a1a",
               }}
             >
-              Tu reputación,{" "}
-              <span style={{ color: "#D4AF37" }}>nuestro mayor compromiso</span>
+              {t("title")}{" "}
+              <span style={{ color: "#D4AF37" }}>{t("titleHighlight")}</span>
             </h2>
             <div
               className="w-14 h-px mt-6 mb-8"
@@ -56,8 +58,7 @@ export default function IntroSection() {
                 letterSpacing: "0.02em",
               }}
             >
-              Revisor Externo Independiente acreditado ante la UIF · Más de 20
-              años de experiencia
+              {t("subtitle")}
             </p>
           </div>
           <div>
@@ -69,10 +70,7 @@ export default function IntroSection() {
                 lineHeight: 1.75,
               }}
             >
-              Acompañamos a instituciones financieras y empresas en el diseño e
-              implementación de programas de cumplimiento normativo. Soluciones
-              a medida que reducen riesgos y fortalecen la confianza de clientes
-              y reguladores.
+              {t("body")}
             </p>
             <Link
               href="/sobre-nosotros"
@@ -83,7 +81,7 @@ export default function IntroSection() {
               }}
             >
               <span className="relative">
-                Conocer más
+                {t("seeMore")}
                 <span className="absolute bottom-0 left-0 w-0 h-px bg-[#D4AF37] transition-all duration-300 group-hover:w-full" />
               </span>
               <span className="transition-transform duration-300 group-hover:translate-x-0.5">

@@ -1,17 +1,19 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
-import Logo from "./Logo";
-
-const navLinks = [
-  { href: "/areas-practica", label: "Servicios" },
-  { href: "/sobre-nosotros", label: "Nosotros" },
-  { href: "/contacto", label: "Contacto" },
-];
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
+import { LogoIcon } from "./Logo";
 
 export default function PageNav() {
+  const t = useTranslations("common.nav");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const navLinks = [
+    { href: "/areas-practica", label: t("services") },
+    { href: "/sobre-nosotros", label: t("nosotros") },
+    { href: "/contacto", label: t("contact") },
+  ];
 
   return (
     <>
@@ -20,7 +22,9 @@ export default function PageNav() {
         style={{ backgroundColor: "#1a2e24" }}
       >
         <div className="flex items-center justify-between">
-          <Logo href="/" />
+          <Link href="/" className="inline-flex items-center" aria-label="MEP Compliance - Inicio">
+            <LogoIcon />
+          </Link>
 
           <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
@@ -41,7 +45,7 @@ export default function PageNav() {
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="lg:hidden p-2.5 rounded-sm border border-[#D4AF37]/50 transition-all duration-300 hover:border-[#D4AF37]"
-            aria-label="Menú"
+            aria-label={t("menu")}
           >
             <div className="w-6 h-4 flex flex-col justify-between">
               <span

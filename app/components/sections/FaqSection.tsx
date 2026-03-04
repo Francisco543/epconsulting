@@ -1,49 +1,14 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 
-const FAQ_ITEMS = [
-  {
-    id: "rei",
-    question: "¿Qué es un Revisor Externo Independiente (REI)?",
-    answer:
-      "El Revisor Externo Independiente es un profesional acreditado ante la Unidad de Información Financiera (UIF) que realiza la revisión independiente del sistema de prevención de lavado de activos y financiación del terrorismo de los sujetos obligados. Emite informes que se presentan ante la UIF y contribuyen al cumplimiento normativo y a la transparencia del programa de compliance.",
-  },
-  {
-    id: "sujetos",
-    question: "¿Quiénes son sujetos obligados ante la UIF?",
-    answer:
-      "Son sujetos obligados las entidades y personas que por su actividad quedan alcanzadas por la ley de prevención de lavado de activos y financiación del terrorismo: instituciones financieras, entidades no financieras (casas de cambio, inmobiliarias, etc.), profesionales (abogados, contadores, escribanos en ciertos actos), y otros sectores regulados. La normativa define el listado completo según la actividad.",
-  },
-  {
-    id: "plazos",
-    question: "¿En qué plazos responden las consultas?",
-    answer:
-      "Respondemos consultas iniciales en un plazo de 24 a 48 horas hábiles. Para propuestas o alcance de servicios según la complejidad del proyecto, coordinamos una reunión o llamada y enviamos una propuesta en un plazo acordado. En auditorías REI y proyectos de compliance, los plazos se definen según el cronograma acordado con el cliente.",
-  },
-  {
-    id: "proceso",
-    question: "¿Cómo es el proceso típico de trabajo?",
-    answer:
-      "Tras el primer contacto, realizamos una reunión para conocer su necesidad (análisis de riesgo, políticas, capacitación, REI, etc.). A partir de ahí elaboramos una propuesta con alcance, metodología y plazos. Una vez aprobada, avanzamos según el tipo de servicio: relevamiento, documentación, capacitaciones, auditoría o emisión de informes. Mantenemos comunicación fluida y entregables en los tiempos acordados.",
-  },
-  {
-    id: "alcance",
-    question: "¿Trabajan solo en Argentina?",
-    answer:
-      "No, brindamos servicios a nivel global. Si bien nuestra sede central está en Buenos Aires, trabajamos con organizaciones y sujetos obligados de todo el mundo. Adaptamos nuestro asesoramiento en compliance tanto a los estándares internacionales como a las normativas específicas de cada jurisdicción donde operen nuestros clientes.",
-  },
-  {
-    id: "contacto",
-    question: "¿Cómo puedo solicitar una consulta o propuesta?",
-    answer:
-      "Podés escribirnos por email a info@mepcompliance.com o llamarnos al +54 11 4916-9760. También podés completar el formulario en la página de contacto. Indicá brevemente su sector, tipo de organización y en qué necesitan apoyo (compliance, REI, capacitación, etc.) y te respondemos a la brevedad.",
-  },
-];
+const FAQ_IDS = ["rei", "sujetos", "plazos", "proceso", "alcance", "contacto"] as const;
 
 export default function FaqSection() {
-  const [openId, setOpenId] = useState<string | null>(FAQ_ITEMS[0].id);
+  const t = useTranslations("home.faq");
+  const [openId, setOpenId] = useState<string | null>(FAQ_IDS[0]);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -81,7 +46,7 @@ export default function FaqSection() {
             color: "rgba(26, 26, 26, 0.5)",
           }}
         >
-          FAQ
+          {t("label")}
         </p>
         <h2
           className="text-3xl sm:text-4xl lg:text-5xl leading-[0.95] mb-5"
@@ -91,7 +56,7 @@ export default function FaqSection() {
             color: "#1a1a1a",
           }}
         >
-          Preguntas <span style={{ color: "#D4AF37" }}>frecuentes</span>
+          {t("title")} <span style={{ color: "#D4AF37" }}>{t("titleHighlight")}</span>
         </h2>
         <p
           className="text-base mb-12 max-w-xl"
@@ -101,24 +66,24 @@ export default function FaqSection() {
             lineHeight: 1.65,
           }}
         >
-          Respuestas breves sobre nuestros servicios, el REI y cómo trabajamos.
+          {t("description")}
         </p>
 
         <div className="space-y-0 border-y border-neutral-200/80">
-          {FAQ_ITEMS.map((item, index) => {
-            const isOpen = openId === item.id;
+          {FAQ_IDS.map((id, index) => {
+            const isOpen = openId === id;
             return (
               <div
-                key={item.id}
+                key={id}
                 className="border-b border-neutral-200/80 last:border-b-0"
               >
                 <button
                   type="button"
-                  onClick={() => setOpenId(isOpen ? null : item.id)}
+                  onClick={() => setOpenId(isOpen ? null : id)}
                   className="w-full flex items-start justify-between gap-4 py-5 sm:py-6 text-left transition-colors duration-200 hover:bg-white/50"
                   aria-expanded={isOpen}
-                  aria-controls={`faq-answer-${item.id}`}
-                  id={`faq-question-${item.id}`}
+                  aria-controls={`faq-answer-${id}`}
+                  id={`faq-question-${id}`}
                 >
                   <span
                     className="flex-1 text-base sm:text-lg font-medium pr-4"
@@ -128,7 +93,7 @@ export default function FaqSection() {
                       lineHeight: 1.4,
                     }}
                   >
-                    {item.question}
+                    {t(`items.${id}.q`)}
                   </span>
                   <span
                     className="shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-transform duration-300"
@@ -158,9 +123,9 @@ export default function FaqSection() {
                   </span>
                 </button>
                 <div
-                  id={`faq-answer-${item.id}`}
+                  id={`faq-answer-${id}`}
                   role="region"
-                  aria-labelledby={`faq-question-${item.id}`}
+                  aria-labelledby={`faq-question-${id}`}
                   className="overflow-hidden transition-all duration-300 ease-out"
                   style={{
                     maxHeight: isOpen ? "400px" : "0",
@@ -175,7 +140,7 @@ export default function FaqSection() {
                       lineHeight: 1.75,
                     }}
                   >
-                    {item.answer}
+                    {t(`items.${id}.a`)}
                   </p>
                 </div>
               </div>
@@ -190,13 +155,13 @@ export default function FaqSection() {
             color: "rgba(26, 26, 26, 0.6)",
           }}
         >
-          ¿No encontrás tu pregunta?{" "}
+          {t("contactPrompt")}{" "}
           <Link
             href="/contacto"
             className="font-medium transition-colors hover:text-[#D4AF37]"
             style={{ color: "#1a1a1a" }}
           >
-            Escribinos
+            {t("contactLink")}
           </Link>
           .
         </p>

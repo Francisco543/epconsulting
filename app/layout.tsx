@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { getLocale, getMessages } from "next-intl/server";
+import { NextIntlClientProvider } from "next-intl";
 import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 import CustomCursor from "./components/ui/CustomCursor";
@@ -78,18 +80,28 @@ export const metadata: Metadata = {
   category: "legal",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  let locale = "es";
+  let messages: Record<string, unknown> | undefined;
+  try {
+    locale = await getLocale();
+    messages = await getMessages();
+  } catch {
+    // Rutas sin i18n (admin, portal, empleados) usan default
+  }
   return (
-    <html lang="es">
+    <html lang={locale}>
       <body className={`${playfair.variable} ${inter.variable} antialiased`}>
-        <JsonLd />
-        <Analytics />
-        <CustomCursor />
-        {children}
+        <NextIntlClientProvider messages={messages ?? {}}>
+          <JsonLd />
+          <Analytics />
+          <CustomCursor />
+          {children}
+        </NextIntlClientProvider>
       </body>
     </html>
   );

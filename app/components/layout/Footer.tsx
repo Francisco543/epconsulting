@@ -1,10 +1,13 @@
 "use client";
 
-import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
-import Logo from "./Logo";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
+import { LogoIcon } from "./Logo";
 
 export default function Footer() {
+  const t = useTranslations("common");
+  const tNav = useTranslations("common.nav");
   const [isVisible, setIsVisible] = useState(false);
   const currentYear = new Date().getFullYear();
   const sectionRef = useRef<HTMLElement>(null);
@@ -25,11 +28,11 @@ export default function Footer() {
   }, []);
 
   const navLinks = [
-    { href: "/", label: "Inicio" },
-    { href: "/sobre-nosotros", label: "Nosotros" },
-    { href: "/servicios", label: "Servicios" },
-    { href: "/areas-practica", label: "Áreas de Práctica" },
-    { href: "/contacto", label: "Contacto" },
+    { href: "/", label: tNav("home") },
+    { href: "/sobre-nosotros", label: tNav("nosotros") },
+    { href: "/servicios", label: tNav("services") },
+    { href: "/areas-practica", label: tNav("areas") },
+    { href: "/contacto", label: tNav("contact") },
   ];
 
   return (
@@ -45,7 +48,9 @@ export default function Footer() {
     >
       <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12 py-16 lg:py-20">
         <div className="max-w-4xl mx-auto text-center">
-          <Logo href="/" className="inline-block mb-10" />
+          <Link href="/" className="inline-block mb-10" aria-label="MEP Compliance - Inicio">
+            <LogoIcon />
+          </Link>
 
           <p
             className="text-sm max-w-xl mx-auto mb-12 leading-relaxed"
@@ -131,7 +136,7 @@ export default function Footer() {
                   color: "rgba(245, 230, 200, 0.55)",
                 }}
               >
-                Revisor Externo Independiente UIF
+                {t("footer.rei")}
               </span>
             </div>
 
@@ -143,7 +148,7 @@ export default function Footer() {
                   color: "rgba(245, 230, 200, 0.45)",
                 }}
               >
-                © {currentYear} MEP Compliance
+                {t("footer.copyright", { year: currentYear })}
               </p>
               <span
                 className="hidden sm:block text-xs"
@@ -164,7 +169,7 @@ export default function Footer() {
                   }}
                 >
                   <span className="relative">
-                    Aviso Legal
+                    {t("footer.legal")}
                     <span className="absolute bottom-0 left-0 w-0 h-px bg-[#D4AF37] transition-all duration-300 group-hover:w-full" />
                   </span>
                 </Link>
@@ -177,7 +182,7 @@ export default function Footer() {
                   }}
                 >
                   <span className="relative">
-                    Privacidad
+                    {t("footer.privacy")}
                     <span className="absolute bottom-0 left-0 w-0 h-px bg-[#D4AF37] transition-all duration-300 group-hover:w-full" />
                   </span>
                 </Link>
