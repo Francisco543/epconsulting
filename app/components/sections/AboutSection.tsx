@@ -1,22 +1,24 @@
 "use client";
 
-import Link from "next/link";
-import CountUp from "@/components/CountUp";
 import { useState, useEffect, useRef } from "react";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
+import CountUp from "@/components/CountUp";
 
 type AboutSectionHeroProps = {
-  /** Texto del enlace (ej. "Conocer más" en home, "Contactar" en nosotros). Si no se pasa, no se muestra enlace. */
   linkLabel?: string;
-  /** URL del enlace (ej. "/sobre-nosotros" en home, "/contacto" en nosotros). */
   linkHref?: string;
 };
 
 export default function AboutSectionHero({
-  linkLabel = "Conocer más",
-  linkHref = "/sobre-nosotros",
+  linkLabel,
+  linkHref,
 }: AboutSectionHeroProps) {
+  const t = useTranslations("home.about");
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const label = linkLabel ?? t("seeMore");
+  const href = linkHref ?? "/sobre-nosotros";
 
   useEffect(() => {
     const el = sectionRef.current;
@@ -55,7 +57,7 @@ export default function AboutSectionHero({
               transitionDelay: "200ms",
             }}
           >
-            Liderazgo
+            {t("label")}
           </p>
 
           <h2
@@ -71,8 +73,8 @@ export default function AboutSectionHero({
               transitionDelay: "300ms",
             }}
           >
-            Dra. María Eugenia{" "}
-            <span style={{ color: "#D4AF37" }}>Palomeque</span>
+            {t("title")}{" "}
+            <span style={{ color: "#D4AF37" }}>{t("titleHighlight")}</span>
           </h2>
 
           <p
@@ -88,7 +90,7 @@ export default function AboutSectionHero({
               transitionDelay: "400ms",
             }}
           >
-            Abogada Principal · Revisor Externo Independiente UIF
+            {t("role")}
           </p>
 
           <div
@@ -115,12 +117,7 @@ export default function AboutSectionHero({
               transitionDelay: "500ms",
             }}
           >
-            Con más de 20 años de experiencia en compliance y prevención de
-            lavado de activos, lidera nuestra consultora. Se ha desempeñado como
-            Oficial de Cumplimiento y como Chief Compliance Officer en
-            instituciones financieras líderes. Es además Revisora Externa
-            Independiente habilitada por la Unidad de Información Financiera
-            (UIF).
+            {t("bio")}
           </p>
 
           <div
@@ -158,7 +155,7 @@ export default function AboutSectionHero({
                   color: "rgba(26, 26, 26, 0.5)",
                 }}
               >
-                Años de experiencia
+                {t("years")}
               </p>
             </div>
             <div
@@ -183,12 +180,12 @@ export default function AboutSectionHero({
                   color: "rgba(26, 26, 26, 0.5)",
                 }}
               >
-                UIF Acreditado
+                {t("rei")}
               </p>
             </div>
           </div>
 
-          {linkLabel && linkHref && (
+          {href && (
             <div
               className={`transition-all duration-700 ease-out ${
                 isVisible
@@ -198,7 +195,7 @@ export default function AboutSectionHero({
               style={{ transitionDelay: "700ms" }}
             >
               <Link
-                href={linkHref}
+                href={href}
                 className="group inline-flex items-center gap-2 text-xs uppercase tracking-[0.22em] transition-all duration-300"
                 style={{
                   fontFamily: "var(--font-monument)",
@@ -206,7 +203,7 @@ export default function AboutSectionHero({
                 }}
               >
                 <span className="relative">
-                  {linkLabel}
+                  {label}
                   <span className="absolute bottom-0 left-0 w-0 h-px bg-[#D4AF37] transition-all duration-300 group-hover:w-full" />
                 </span>
                 <span className="transition-transform duration-300 group-hover:translate-x-0.5">

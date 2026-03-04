@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import { SITE_URL } from "@/app/lib/site";
 import { supabaseServer } from "@/app/lib/supabaseServer";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -15,8 +16,7 @@ export async function POST(
   { params }: { params: Promise<{ id: string }> },
 ) {
   const { id } = await params;
-  const siteUrl =
-    process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ?? "http://localhost:3000";
+  const siteUrl = SITE_URL.replace(/\/$/, "");
 
   try {
     // Obtener solicitud e ítems pendientes

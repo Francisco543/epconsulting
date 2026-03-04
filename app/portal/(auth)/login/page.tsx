@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { signInWithEmailPassword, sendPasswordResetEmail } from "@/app/services/authService";
+import { SITE_URL } from "@/app/lib/site";
 import Logo from "@/app/components/layout/Logo";
 
 type View = "login" | "forgot" | "forgot-sent";
@@ -42,9 +43,7 @@ export default function PortalLoginPage() {
     setError(null);
     setIsSubmitting(true);
     try {
-      const siteUrl =
-        process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ??
-        window.location.origin;
+      const siteUrl = SITE_URL.replace(/\/$/, "");
       await sendPasswordResetEmail(email, `${siteUrl}/portal/callback`);
       setView("forgot-sent");
     } catch (err) {

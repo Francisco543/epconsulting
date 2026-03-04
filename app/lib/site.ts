@@ -1,9 +1,9 @@
 /**
- * Configuración central para SEO y metadata.
- * Sobrescribir con NEXT_PUBLIC_SITE_URL en producción (ej: https://www.mepconsulting.com.ar).
+ * Configuración central para SEO, metadata y enlaces en emails (reset password, invitaciones).
+ * En Vercel definir NEXT_PUBLIC_SITE_URL = https://mepcompliance.com (no NEXT_PUBLIC_SITE_ULR).
  */
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://www.mepconsulting.com.ar";
+  process.env.NEXT_PUBLIC_SITE_URL || "https://mepcompliance.com";
 
 export const SITE_NAME = "MEP Compliance";
 

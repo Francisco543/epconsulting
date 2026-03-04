@@ -1,0 +1,204 @@
+{
+  "common": {
+    "nav": {
+      "home": "Home",
+      "areas": "Practice Areas",
+      "services": "Services",
+      "about": "About Us",
+      "contact": "Contact",
+      "menu": "Menu",
+      "nosotros": "Us"
+    },
+    "footer": {
+      "tagline": "MEP Compliance. Specialists in anti-money laundering, counter-terrorist financing and compliance. Independent External Reviewer accredited with the FIU.",
+      "legal": "Legal Notice",
+      "privacy": "Privacy",
+      "copyright": "© {year} MEP Compliance",
+      "rei": "Independent External Reviewer FIU"
+    },
+    "lang": "Language",
+    "seeMore": "Learn more",
+    "sendMessage": "Send message",
+    "viewMore": "View more",
+    "viewAllServices": "View all services",
+    "email": "Email",
+    "phone": "Phone"
+  },
+  "home": {
+    "hero": {
+      "yearsLabel": "Years of experience",
+      "years": "20+",
+      "title": "Your Strategic Partner in",
+      "titleHighlight": "Compliance",
+      "subtitle": "We turn regulatory compliance into a competitive advantage for your organization.",
+      "reiLabel": "Independent External Reviewer accredited with the FIU",
+      "seeMore": "Learn more",
+      "experts": "COMPLIANCE EXPERTS"
+    },
+    "intro": {
+      "title": "Your reputation,",
+      "titleHighlight": "our top commitment",
+      "subtitle": "Independent External Reviewer accredited with the FIU · Over 20 years of experience",
+      "body": "We support financial institutions and companies in designing and implementing regulatory compliance programs. Tailored solutions that reduce risk and strengthen the trust of clients and regulators.",
+      "seeMore": "Learn more"
+    },
+    "soluciones": {
+      "label": "Services",
+      "title": "Solutions",
+      "titleHighlight": "tailored",
+      "description": "Risk assessment, policies and procedures, training and ongoing audits. We design each service around your sector and objectives.",
+      "viewMore": "View more",
+      "viewAllServices": "View all services",
+      "cards": {
+        "politicas": {
+          "title": "Policies and procedures",
+          "desc": "Design and implementation of regulatory frameworks tailored to your sector and size."
+        },
+        "analisis": {
+          "title": "Risk assessment",
+          "desc": "Custom evaluation to identify and prioritize compliance risks in your organization."
+        },
+        "capacitacion": {
+          "title": "Training",
+          "desc": "Training programs for teams and leaders in anti-money laundering prevention."
+        },
+        "auditoria": {
+          "title": "Ongoing audits",
+          "desc": "Review and continuous improvement of your compliance processes."
+        }
+      }
+    },
+    "about": {
+      "label": "Leadership",
+      "title": "Dr. María Eugenia",
+      "titleHighlight": "Palomeque",
+      "role": "Principal Attorney · Independent External Reviewer FIU",
+      "bio": "With over 20 years of experience in compliance and anti-money laundering, she leads our consultancy. She has served as Compliance Officer and Chief Compliance Officer at leading financial institutions. She is also an Independent External Reviewer authorized by the Financial Information Unit (FIU).",
+      "years": "Years of experience",
+      "rei": "FIU Accredited",
+      "seeMore": "Learn more",
+      "contact": "Contact"
+    },
+    "contactCta": {
+      "label": "Contact",
+      "title": "Let's talk",
+      "subtitle": "We are ready to help you turn regulatory compliance into a competitive advantage.",
+      "disclaimer": "No obligation · We respond within 24 to 48 hours",
+      "sendMessage": "Send message"
+    },
+    "faq": {
+      "label": "FAQ",
+      "title": "Frequently",
+      "titleHighlight": "asked questions",
+      "description": "Brief answers about our services, the IER and how we work.",
+      "contactPrompt": "Can't find your question?",
+      "contactLink": "Contact us",
+      "items": {
+        "rei": {
+          "q": "What is an Independent External Reviewer (IER)?",
+          "a": "The Independent External Reviewer is a professional accredited by the Financial Information Unit (FIU) who performs the independent review of the anti-money laundering and counter-terrorist financing system of obligated subjects. They issue reports submitted to the FIU and contribute to regulatory compliance and the transparency of the compliance program."
+        },
+        "sujetos": {
+          "q": "Who are obligated subjects before the FIU?",
+          "a": "Obligated subjects are entities and individuals whose activities fall under the anti-money laundering and counter-terrorist financing law: financial institutions, non-financial entities (exchange houses, real estate, etc.), professionals (lawyers, accountants, notaries in certain acts), and other regulated sectors. The regulations define the full list according to activity."
+        },
+        "plazos": {
+          "q": "What is your response time for enquiries?",
+          "a": "We respond to initial enquiries within 24 to 48 business hours. For proposals or scope of services depending on project complexity, we arrange a meeting or call and send a proposal within an agreed timeframe. For IER audits and compliance projects, timelines are defined according to the schedule agreed with the client."
+        },
+        "proceso": {
+          "q": "What is the typical working process?",
+          "a": "After first contact, we hold a meeting to understand your needs (risk assessment, policies, training, IER, etc.). From there we prepare a proposal with scope, methodology and timeline. Once approved, we proceed according to the type of service: assessment, documentation, training, audit or report issuance. We maintain fluid communication and deliverables within agreed times."
+        },
+        "alcance": {
+          "q": "Do you only work in Argentina?",
+          "a": "No, we provide services globally. Although our headquarters are in Buenos Aires, we work with organizations and obligated subjects worldwide. We adapt our compliance advisory to both international standards and the specific regulations of each jurisdiction where our clients operate."
+        },
+        "contacto": {
+          "q": "How can I request a consultation or proposal?",
+          "a": "You can email us at info@mepcompliance.com or call +54 11 4916-9760. You can also complete the form on the contact page. Briefly indicate your sector, type of organization and where you need support (compliance, IER, training, etc.) and we will respond promptly."
+        }
+      }
+    }
+  },
+  "contact": {
+    "label": "Contact",
+    "title": "Let's talk",
+    "subtitle": "We are ready to help you turn regulatory compliance into a competitive advantage.",
+    "contactData": "Contact details",
+    "contactIntro": "Email or call us. We will respond as soon as possible.",
+    "sendMessage": "Send message",
+    "formIntro": "Complete the form and we will reply by email. Data is stored securely and only used to respond to your enquiry.",
+    "name": "Full name",
+    "namePlaceholder": "Your name",
+    "emailPlaceholder": "your@email.com",
+    "phoneOptional": "Phone (optional)",
+    "phonePlaceholder": "+54 11 1234-5678",
+    "company": "Company (optional)",
+    "companyPlaceholder": "Company name",
+    "message": "Message",
+    "messagePlaceholder": "Write your enquiry or message...",
+    "submit": "Send message",
+    "sending": "Sending...",
+    "success": "Message sent. We will respond shortly.",
+    "error": "There was an error sending. Please try again or contact us by email."
+  },
+  "terms": {
+    "title": "Terms and Conditions",
+    "label": "Terms"
+  },
+  "privacy": {
+    "title": "Privacy",
+    "label": "Privacy"
+  },
+  "legal": {
+    "title": "Legal Notice",
+    "label": "Legal Notice"
+  },
+  "cookies": {
+    "title": "Cookie Policy",
+    "label": "Cookies"
+  },
+  "aboutPage": {
+    "label": "Us",
+    "title": "About",
+    "titleHighlight": "us",
+    "subtitle": "A consultancy specialized in compliance and anti-money laundering prevention, with over 20 years of experience and FIU REI accreditation."
+  },
+  "auth": {
+    "adminLogin": {
+      "title": "Admin panel",
+      "subtitle": "Sign in with your administrator account.",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Sign in",
+      "error": "Invalid credentials or sign-in error."
+    },
+    "portalLogin": {
+      "title": "Company portal",
+      "subtitle": "Sign in with your manager account.",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Sign in",
+      "forgot": "Forgot your password?",
+      "forgotTitle": "Recover password",
+      "forgotSubmit": "Send link",
+      "forgotSent": "Check your email. We sent you a link to reset your password.",
+      "backToLogin": "Back to sign in",
+      "error": "Sign-in error"
+    },
+    "empleadosLogin": {
+      "title": "Employee access",
+      "subtitle": "Sign in with your account to view your courses.",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Sign in",
+      "forgot": "Forgot your password?",
+      "forgotTitle": "Recover password",
+      "forgotSubmit": "Send link",
+      "forgotSent": "Check your email. We sent you a link to reset your password.",
+      "backToLogin": "Back to sign in",
+      "error": "Incorrect credentials"
+    }
+  }
+}

@@ -1,12 +1,19 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+import { useLocale, useTranslations } from "next-intl";
+import { Link as I18nLink, usePathname } from "@/i18n/navigation";
 import CircularText from "@/components/CircularText";
-import Logo from "@/app/components/layout/Logo";
+import { LogoIcon } from "@/app/components/layout/Logo";
 
 export default function Hero() {
+  const t = useTranslations("home.hero");
+  const tNav = useTranslations("common.nav");
+  const tCommon = useTranslations("common");
+  const locale = useLocale();
+  const pathname = usePathname();
   const [isVisible, setIsVisible] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [bottomCurve, setBottomCurve] = useState(24);
@@ -43,9 +50,9 @@ export default function Hero() {
   }, []);
 
   const navLinks = [
-    { href: "/areas-practica", label: "Servicios" },
-    { href: "/sobre-nosotros", label: "Nosotros" },
-    { href: "/contacto", label: "Contacto" },
+    { href: "/areas-practica", label: tNav("services") },
+    { href: "/sobre-nosotros", label: tNav("nosotros") },
+    { href: "/contacto", label: tNav("contact") },
   ];
 
   return (
@@ -102,11 +109,13 @@ export default function Hero() {
           }}
         >
           <div className="flex items-center justify-between">
-            <Logo href="/" />
+            <I18nLink href="/" className="inline-flex items-center" aria-label="MEP Compliance - Inicio">
+              <LogoIcon />
+            </I18nLink>
 
             <div className="hidden lg:flex items-center gap-8">
               {navLinks.map((link) => (
-                <Link
+                <I18nLink
                   key={link.href}
                   href={link.href}
                   className="text-[13px] uppercase tracking-[0.18em] transition-colors duration-300 hover:text-[#D4AF37]"
@@ -116,14 +125,38 @@ export default function Hero() {
                   }}
                 >
                   {link.label}
-                </Link>
+                </I18nLink>
               ))}
+              <div className="flex items-center gap-1 border border-[#D4AF37]/40 rounded-full p-0.5 ml-2">
+                <a
+                  href={`${pathname}${pathname.includes("?") ? "&" : "?"}locale=es`}
+                  className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
+                    locale === "es"
+                      ? "bg-[#D4AF37] text-[#1a2e24]"
+                      : "text-[rgba(245,230,200,0.85)] hover:bg-[#D4AF37]/20"
+                  }`}
+                  style={{ fontFamily: "var(--font-inter)" }}
+                >
+                  ES
+                </a>
+                <a
+                  href={`${pathname}${pathname.includes("?") ? "&" : "?"}locale=en`}
+                  className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
+                    locale === "en"
+                      ? "bg-[#D4AF37] text-[#1a2e24]"
+                      : "text-[rgba(245,230,200,0.85)] hover:bg-[#D4AF37]/20"
+                  }`}
+                  style={{ fontFamily: "var(--font-inter)" }}
+                >
+                  EN
+                </a>
+              </div>
             </div>
 
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="lg:hidden p-2.5 rounded-sm border border-[#D4AF37]/50 transition-all duration-300 hover:border-[#D4AF37]"
-              aria-label="Menú"
+              aria-label={tNav("menu")}
             >
               <div className="w-6 h-4 flex flex-col justify-between">
                 <span
@@ -167,7 +200,7 @@ export default function Hero() {
                     color: "rgba(245, 230, 200, 0.6)",
                   }}
                 >
-                  Años de experiencia
+                  {t("yearsLabel")}
                 </p>
                 <p
                   className="text-5xl sm:text-6xl lg:text-7xl font-light mb-8 leading-none tracking-tight"
@@ -176,7 +209,7 @@ export default function Hero() {
                     color: "#F5E6C8",
                   }}
                 >
-                  20+
+                  {t("years")}
                 </p>
               </div>
               <h1
@@ -192,8 +225,8 @@ export default function Hero() {
                   transitionDelay: "80ms",
                 }}
               >
-                Su Socio Estratégico en{" "}
-                <span style={{ color: "#D4AF37" }}>Compliance</span>
+                {t("title")}{" "}
+                <span style={{ color: "#D4AF37" }}>{t("titleHighlight")}</span>
               </h1>
               <div
                 className={`w-14 h-px mb-6 transition-all duration-700 ease-out ${
@@ -218,8 +251,7 @@ export default function Hero() {
                   transitionDelay: "160ms",
                 }}
               >
-                Transformamos el cumplimiento normativo en ventaja competitiva
-                para tu organización.
+                {t("subtitle")}
               </p>
               <p
                 className={`text-[10px] uppercase tracking-[0.28em] mb-10 transition-all duration-700 ease-out ${
@@ -233,7 +265,7 @@ export default function Hero() {
                   transitionDelay: "200ms",
                 }}
               >
-                Revisor Externo Independiente acreditado ante la UIF
+                {t("reiLabel")}
               </p>
               <div
                 className={`transition-all duration-700 ease-out ${
@@ -243,7 +275,7 @@ export default function Hero() {
                 }`}
                 style={{ transitionDelay: "220ms" }}
               >
-                <Link
+                <I18nLink
                   href="/sobre-nosotros"
                   className="group inline-flex items-center gap-2 text-xs uppercase tracking-[0.28em] transition-all duration-300"
                   style={{
@@ -252,13 +284,13 @@ export default function Hero() {
                   }}
                 >
                   <span className="relative">
-                    Conocer más
+                    {t("seeMore")}
                     <span className="absolute bottom-0 left-0 w-0 h-px bg-[#D4AF37] transition-all duration-300 group-hover:w-full" />
                   </span>
                   <span className="transition-transform duration-300 group-hover:translate-x-0.5">
                     →
                   </span>
-                </Link>
+                </I18nLink>
               </div>
             </div>
           </div>
@@ -279,7 +311,7 @@ export default function Hero() {
         >
           <div className="relative w-[76px] h-[76px] flex items-center justify-center">
             <CircularText
-              text="EXPERTOS EN COMPLIANCE • "
+              text={`${t("experts")} • `}
               spinDuration={25}
               onHover="speedUp"
               className="circular-text-hero"
@@ -316,7 +348,7 @@ export default function Hero() {
           <div className="px-6 pt-24 pb-12">
             <nav className="space-y-1">
               {navLinks.map((link) => (
-                <Link
+                <I18nLink
                   key={link.href}
                   href={link.href}
                   onClick={() => setIsMenuOpen(false)}
@@ -327,9 +359,14 @@ export default function Hero() {
                   }}
                 >
                   {link.label}
-                </Link>
+                </I18nLink>
               ))}
             </nav>
+            <div className="flex items-center gap-2 pt-6 border-t border-[#D4AF37]/20 mt-6">
+              <span className="text-sm mr-2" style={{ fontFamily: "var(--font-inter)", color: "rgba(245,230,200,0.6)" }}>{tCommon("lang")}:</span>
+              <a href={`${pathname}${pathname.includes("?") ? "&" : "?"}locale=es`} onClick={() => setIsMenuOpen(false)} className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${locale === "es" ? "bg-[#D4AF37] text-[#1a2e24]" : "text-[#F5E6C8] border border-[#D4AF37]/40 hover:bg-[#D4AF37]/20"}`} style={{ fontFamily: "var(--font-inter)" }}>ES</a>
+              <a href={`${pathname}${pathname.includes("?") ? "&" : "?"}locale=en`} onClick={() => setIsMenuOpen(false)} className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${locale === "en" ? "bg-[#D4AF37] text-[#1a2e24]" : "text-[#F5E6C8] border border-[#D4AF37]/40 hover:bg-[#D4AF37]/20"}`} style={{ fontFamily: "var(--font-inter)" }}>EN</a>
+            </div>
             <div className="mt-12">
               <span
                 className="text-lg"
